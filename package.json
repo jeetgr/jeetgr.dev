@@ -10,9 +10,13 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check"
+    "fmt:check": "oxfmt --check",
+    "check": "pnpm lint:fix && pnpm fmt"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@tanstack/react-devtools": "^0.10.8",
     "@tanstack/react-form": "^1.33.0",
     "@tanstack/react-router": "^1.170.17",

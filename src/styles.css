@@ -1,15 +1,55 @@
 @import "tailwindcss";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
 
-* {
-  box-sizing: border-box;
+@theme {
+  --color-background: oklch(97% 0.005 90);
+  --color-foreground: oklch(15% 0.02 264);
+
+  --color-surface: oklch(94% 0.006 90);
+  --color-surface-foreground: oklch(18% 0.02 264);
+
+  --color-border: oklch(78% 0.02 260);
+  --color-border-strong: oklch(65% 0.03 260);
+
+  --color-primary: oklch(40% 0.13 260);
+  --color-primary-foreground: oklch(97% 0.005 90);
+
+  --color-accent: oklch(65% 0.13 75);
+  --color-accent-foreground: oklch(15% 0.02 264);
+
+  --color-muted: oklch(50% 0.01 264);
+
+  --color-signal: oklch(50% 0.06 150);
+  --color-signal-foreground: oklch(97% 0.005 90);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-html,
-body,
-#app {
-  min-height: 100%;
-}
+.dark {
+  --color-background: oklch(15% 0.02 264);
+  --color-foreground: oklch(95% 0.005 90);
 
-body {
-  margin: 0;
+  --color-surface: oklch(20% 0.02 264);
+  --color-surface-foreground: oklch(92% 0.005 90);
+
+  --color-border: oklch(30% 0.02 264);
+  --color-border-strong: oklch(38% 0.03 264);
+
+  --color-primary: oklch(70% 0.13 260);
+  --color-primary-foreground: oklch(15% 0.02 264);
+
+  --color-accent: oklch(70% 0.13 75);
+  --color-accent-foreground: oklch(15% 0.02 264);
+
+  --color-muted: oklch(65% 0.01 264);
+
+  --color-signal: oklch(65% 0.06 150);
+  --color-signal-foreground: oklch(15% 0.02 264);
 }
