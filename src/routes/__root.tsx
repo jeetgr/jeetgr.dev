@@ -3,6 +3,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import { THEME_STORAGE_KEY } from "@/lib/theme";
+import { ThemeProvider } from "@/lib/theme-context";
 
 import appCss from "../styles.css?url";
 
@@ -32,9 +33,9 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <HeadContent />{" "}
+        <HeadContent />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -51,7 +52,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",
