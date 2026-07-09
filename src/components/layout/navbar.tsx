@@ -1,4 +1,5 @@
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -48,7 +49,11 @@ export function Navbar() {
             setOpen((v) => !v);
           }}
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? (
+            <HugeiconsIcon icon={X} className="size-5" />
+          ) : (
+            <HugeiconsIcon icon={Menu} className="size-5" />
+          )}
         </button>
       </nav>
 

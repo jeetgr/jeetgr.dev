@@ -1,12 +1,13 @@
-import { Monitor, Moon, Sun } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Monitor, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import type { IconSvgElement } from "@hugeicons/react";
 
 import type { Theme } from "@/lib/theme";
 import { useTheme } from "@/lib/theme-context";
 
-const options: { value: Theme; icon: LucideIcon; label: string }[] = [
-  { value: "light", icon: Sun, label: "Light" },
-  { value: "dark", icon: Moon, label: "Dark" },
+const options: { value: Theme; icon: IconSvgElement; label: string }[] = [
+  { value: "light", icon: Sun03Icon, label: "Light" },
+  { value: "dark", icon: Moon02Icon, label: "Dark" },
   { value: "system", icon: Monitor, label: "System" },
 ];
 
@@ -19,7 +20,7 @@ export function ThemeToggle() {
       aria-label="Theme"
       className="border-border bg-surface inline-flex items-center gap-1 rounded-lg border p-1"
     >
-      {options.map(({ value, icon: Icon, label }) => (
+      {options.map(({ value, icon, label }) => (
         <button
           key={value}
           type="button"
@@ -36,7 +37,7 @@ export function ThemeToggle() {
               : "text-muted hover:text-foreground"
           }`}
         >
-          <Icon className="size-4" />
+          <HugeiconsIcon icon={icon} className="size-4" />
         </button>
       ))}
     </div>
