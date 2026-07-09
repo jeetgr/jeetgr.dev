@@ -6,7 +6,7 @@ export const projects = [
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     live: "https://myr.jeetgr.dev",
     github: "https://github.com/jeetgr/makeyourresume",
-    image: "/projects/make-your-resume.png",
+    image: "/projects/make-your-resume.webp",
   },
   {
     title: "Promptopia",
@@ -15,6 +15,6 @@ export const projects = [
     stack: ["Next.js", "MongoDB", "TypeScript"],
     live: "https://promptopia.jeetgr.dev",
     github: "https://github.com/jeetgr/promptopia",
-    image: "/projects/promptopia.png",
+    image: "/projects/promptopia.webp",
   },
 ] as const;
