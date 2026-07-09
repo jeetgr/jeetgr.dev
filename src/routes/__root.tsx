@@ -6,7 +6,6 @@ import { MotionConfig } from "motion/react";
 import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { THEME_STORAGE_KEY } from "@/lib/theme";
 import { ThemeProvider } from "@/lib/theme-context";
 
 import appCss from "../styles.css?url";
@@ -56,30 +55,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var theme = localStorage.getItem("${THEME_STORAGE_KEY}") || "system";
-                var resolved = theme === "system"
-                  ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-                  : theme;
-                document.documentElement.classList.toggle("dark", resolved === "dark");
-                document.documentElement.style.colorScheme = resolved;
-              })();
-            `,
-          }}
-        />
       </head>
       <body>
-        <MotionConfig reducedMotion="user">
-          <ThemeProvider>
+        <ThemeProvider>
+          <MotionConfig reducedMotion="user">
             <Navbar />
             {children}
             <Footer />
             <AppToaster />
-          </ThemeProvider>
-        </MotionConfig>
+          </MotionConfig>
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",
