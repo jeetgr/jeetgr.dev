@@ -14,22 +14,38 @@ import appCss from "../styles.css?url";
 export const Route = createRootRoute({
   head: () => ({
     meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Jeet Gangwar - Full-stack Developer" },
       {
-        charSet: "utf-8",
+        name: "description",
+        content:
+          "Full-stack web developer specializing in React, Node.js, and PostgreSQL. Building fast, reliable applications end to end.",
       },
+      { property: "og:title", content: "Jeet Gangwar — Full-Stack Developer" },
       {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
+        property: "og:description",
+        content:
+          "Full-stack web developer specializing in React, Node.js, and PostgreSQL. Building fast, reliable applications end to end.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://jeetgr.dev" },
+      { property: "og:image", content: "https://jeetgr.dev/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Jeet Gangwar — Full-Stack Developer" },
       {
-        title: "Jeet Gangwar",
+        name: "twitter:description",
+        content:
+          "Full-stack web developer specializing in React, Node.js, and PostgreSQL.",
       },
+      { name: "twitter:image", content: "https://jeetgr.dev/og-image.png" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://jeetgr.dev" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", href: "/favicon-256.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon-256.png" },
     ],
   }),
   shellComponent: RootDocument,
