@@ -19,6 +19,7 @@ export default defineConfig({
   ],
   options: {
     typeAware: true,
+    typeCheck: true,
   },
   env: {
     browser: true,
