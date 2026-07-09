@@ -1,6 +1,7 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { MotionConfig } from "motion/react";
 
 import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
@@ -55,12 +56,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body>
-        <ThemeProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <AppToaster />
-        </ThemeProvider>
+        <MotionConfig reducedMotion="user">
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <AppToaster />
+          </ThemeProvider>
+        </MotionConfig>
         <TanStackDevtools
           config={{
             position: "bottom-right",
