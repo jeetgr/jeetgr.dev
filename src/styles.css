@@ -27,6 +27,9 @@
   --color-signal: oklch(50% 0.06 150);
   --color-signal-foreground: oklch(97% 0.005 90);
 
+  --color-destructive: oklch(55% 0.2 25);
+  --color-destructive-foreground: oklch(97% 0.005 90);
+
   --font-display: "Space Grotesk", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -52,4 +55,7 @@
 
   --color-signal: oklch(65% 0.06 150);
   --color-signal-foreground: oklch(15% 0.02 264);
+
+  --color-destructive: oklch(65% 0.2 25);
+  --color-destructive-foreground: oklch(97% 0.005 90);
 }
