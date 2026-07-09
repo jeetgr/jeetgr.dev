@@ -36,7 +36,7 @@ export function Hero() {
         </a>
         <a
           href="/resume.pdf"
-          download
+          download="Jeet Gangwar Fullstack Developer"
           className="border-border text-foreground hover:bg-surface rounded-md border px-5 py-2.5 text-sm font-medium transition-colors"
         >
           Download resume
