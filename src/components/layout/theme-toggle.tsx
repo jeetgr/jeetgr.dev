@@ -18,7 +18,7 @@ export function ThemeToggle() {
     <div
       role="radiogroup"
       aria-label="Theme"
-      className="border-border bg-surface inline-flex items-center gap-1 rounded-lg border p-1"
+      className="border-border bg-surface inline-flex max-w-fit items-center gap-1 rounded-lg border p-1"
     >
       {options.map(({ value, icon, label }) => (
         <button
