@@ -2,6 +2,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
@@ -58,6 +59,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Navbar />
           {children}
           <Footer />
+          <AppToaster />
         </ThemeProvider>
         <TanStackDevtools
           config={{

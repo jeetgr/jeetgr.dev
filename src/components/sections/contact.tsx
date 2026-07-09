@@ -1,5 +1,7 @@
 import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
 
+import { sendContactEmail } from "@/functions/send-contact-email";
 import { contactSchema } from "@/lib/contact-schema";
 import type { ContactFormValues } from "@/lib/contact-schema";
 
@@ -19,8 +21,14 @@ export function Contact() {
     validators: {
       onSubmit: contactSchema,
     },
-    onSubmit: ({ value }) => {
-      console.log(value);
+    onSubmit: async ({ value }) => {
+      try {
+        await sendContactEmail({ data: value });
+        toast.success("Message sent — I'll get back to you soon.");
+        form.reset();
+      } catch {
+        toast.error("Something went wrong. Try again or email me directly.");
+      }
     },
   });
 

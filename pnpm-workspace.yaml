@@ -1,5 +1,6 @@
 allowBuilds:
   esbuild: true
+  sharp: true
 minimumReleaseAgeExclude:
   - "@typescript/typescript-aix-ppc64@7.0.2"
   - "@typescript/typescript-darwin-arm64@7.0.2"
