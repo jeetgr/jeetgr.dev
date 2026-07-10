@@ -1,12 +1,11 @@
+import { useRouteContext } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 
-import { useTheme } from "@/lib/theme-context";
-
 export function AppToaster() {
-  const { theme } = useTheme();
+  const { theme } = useRouteContext({ from: "__root__" });
   return (
     <Toaster
-      theme={theme === "system" ? "system" : theme}
+      theme={theme === "auto" ? "system" : theme}
       position="bottom-right"
       richColors
     />

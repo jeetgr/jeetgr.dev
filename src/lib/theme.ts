@@ -1,46 +1,20 @@
-export const themes = ["light", "dark", "system"] as const;
+import { createServerFn } from "@tanstack/react-start";
+import { getCookie, setCookie } from "@tanstack/react-start/server";
+import * as v from "valibot";
 
-export type Theme = (typeof themes)[number];
+const storageKey = "app-theme";
 
-export const THEME_STORAGE_KEY = "theme";
-export const DEFAULT_THEME = "light";
+const ThemeSchema = v.picklist(["light", "dark", "auto"]);
 
-function isTheme(theme: string): theme is Theme {
-  // @ts-expect-error the includes function is narrowing the types here which we don't want
-  return themes.includes(theme);
-}
+export type Theme = v.InferOutput<typeof ThemeSchema>;
 
-export function getStoredTheme(): Theme {
-  if (typeof window === "undefined") {
-    return DEFAULT_THEME;
-  }
-  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY) ?? DEFAULT_THEME;
-  return isTheme(storedTheme) ? storedTheme : DEFAULT_THEME;
-}
+export const getThemeServerFn = createServerFn().handler(() => {
+  const storedTheme = getCookie(storageKey) ?? "auto";
+  return v.parse(ThemeSchema, storedTheme);
+});
 
-export function getThemeScript() {
-  const key = JSON.stringify(THEME_STORAGE_KEY);
-  const fallback = JSON.stringify(DEFAULT_THEME);
-
-  return `(function(){try{var t=localStorage.getItem(${key});if(t!=='light'&&t!=='dark'&&t!=='system'){t=${fallback}}var d=matchMedia('(prefers-color-scheme: dark)').matches;var r=t==='system'?(d?'dark':'light'):t;var e=document.documentElement;e.classList.add(r);e.style.colorScheme=r}catch(e){}})();`;
-}
-
-export function resolveTheme(theme: Theme): "light" | "dark" {
-  if (theme === "system") {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  }
-  return theme;
-}
-
-export function applyTheme(theme: Theme) {
-  const resolved = resolveTheme(theme);
-  document.documentElement.classList.toggle("dark", resolved === "dark");
-  document.documentElement.style.colorScheme = resolved;
-}
-
-export function setTheme(theme: Theme) {
-  localStorage.setItem(THEME_STORAGE_KEY, theme);
-  applyTheme(theme);
-}
+export const setThemeServerFn = createServerFn()
+  .validator(ThemeSchema)
+  .handler(({ data }) => {
+    setCookie(storageKey, data);
+  });

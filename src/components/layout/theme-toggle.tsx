@@ -1,18 +1,28 @@
 import { Monitor, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { IconSvgElement } from "@hugeicons/react";
+import { useRouteContext, useRouter } from "@tanstack/react-router";
 
+import { setThemeServerFn } from "@/lib/theme";
 import type { Theme } from "@/lib/theme";
-import { useTheme } from "@/lib/theme-context";
 
 const options: { value: Theme; icon: IconSvgElement; label: string }[] = [
   { value: "light", icon: Sun03Icon, label: "Light" },
   { value: "dark", icon: Moon02Icon, label: "Dark" },
-  { value: "system", icon: Monitor, label: "System" },
+  { value: "auto", icon: Monitor, label: "Auto" },
 ];
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useRouteContext({ from: "__root__" });
+  const router = useRouter();
+
+  async function setTheme(newTheme: Theme) {
+    await setThemeServerFn({
+      data: newTheme,
+    });
+
+    await router.invalidate();
+  }
 
   return (
     <div
@@ -29,7 +39,7 @@ export function ThemeToggle() {
           aria-checked={theme === value}
           aria-label={label}
           onClick={() => {
-            setTheme(value);
+            void setTheme(value);
           }}
           className={`rounded-md p-1.5 transition-colors ${
             theme === value

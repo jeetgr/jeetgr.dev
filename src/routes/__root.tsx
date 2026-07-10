@@ -6,7 +6,7 @@ import { MotionConfig } from "motion/react";
 import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { ThemeProvider } from "@/lib/theme-context";
+import { getThemeServerFn } from "@/lib/theme";
 
 import appCss from "../styles.css?url";
 
@@ -47,24 +47,24 @@ export const Route = createRootRoute({
       { rel: "apple-touch-icon", href: "/favicon-256.png" },
     ],
   }),
+  beforeLoad: async () => ({ theme: await getThemeServerFn() }),
   shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const { theme } = Route.useRouteContext();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={theme}>
       <head>
         <HeadContent />
       </head>
       <body>
-        <ThemeProvider>
-          <MotionConfig reducedMotion="user">
-            <Navbar />
-            {children}
-            <Footer />
-            <AppToaster />
-          </MotionConfig>
-        </ThemeProvider>
+        <MotionConfig reducedMotion="user">
+          <Navbar />
+          {children}
+          <Footer />
+          <AppToaster />
+        </MotionConfig>
         <TanStackDevtools
           config={{
             position: "bottom-right",
