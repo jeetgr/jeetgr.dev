@@ -12,7 +12,9 @@ const options: { value: ThemeMode; icon: IconSvgElement; label: string }[] = [
 ];
 
 export function ThemeToggle() {
-  const { themeMode, setTheme } = useTheme();
+  const { themeMode, resolvedTheme, setTheme } = useTheme();
+
+  const activeTheme = themeMode === "auto" ? "auto" : resolvedTheme;
 
   return (
     <div
@@ -26,13 +28,13 @@ export function ThemeToggle() {
           type="button"
           // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
           role="radio"
-          aria-checked={themeMode === value}
+          aria-checked={activeTheme === value}
           aria-label={label}
           onClick={() => {
             setTheme(value);
           }}
           className={`rounded-md p-1.5 transition-colors ${
-            themeMode === value
+            activeTheme === value
               ? "bg-primary text-primary-foreground"
               : "text-muted hover:text-foreground"
           }`}
