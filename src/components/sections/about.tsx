@@ -1,8 +1,9 @@
+import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-5xl px-6 py-24">
+    <SectionWrapper id="about">
       <Reveal>
         <span className="text-muted font-mono text-xs tracking-widest">
           SEC.02 — ABOUT
@@ -39,7 +40,7 @@ export function About() {
           </div>
         </div>
       </Reveal>
-    </section>
+    </SectionWrapper>
   );
 }
 

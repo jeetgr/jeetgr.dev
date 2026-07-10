@@ -1,8 +1,10 @@
+import { SectionWrapper } from "../layout/section-wrapper";
+
 export function Hero() {
   return (
-    <section
+    <SectionWrapper
       id="home"
-      className="relative mx-auto flex min-h-[90vh] max-w-5xl flex-col justify-center px-6 py-24"
+      className="relative flex min-h-[90vh] flex-col justify-center"
     >
       <span className="text-muted font-mono text-xs tracking-widest">
         SEC.01 — HERO
@@ -42,6 +44,6 @@ export function Hero() {
           Download resume
         </a>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

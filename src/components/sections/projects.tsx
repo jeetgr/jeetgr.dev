@@ -1,10 +1,11 @@
 import { projects } from "@/data/projects";
 
+import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
+    <SectionWrapper id="projects">
       <Reveal>
         <span className="text-muted font-mono text-xs tracking-widest">
           SEC.04 — PROJECTS
@@ -75,6 +76,6 @@ export function Projects() {
           ))}
         </div>
       </Reveal>
-    </section>
+    </SectionWrapper>
   );
 }

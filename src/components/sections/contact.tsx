@@ -5,6 +5,7 @@ import { sendContactEmail } from "@/functions/send-contact-email";
 import { contactSchema } from "@/lib/contact-schema";
 import type { ContactFormValues } from "@/lib/contact-schema";
 
+import { SectionWrapper } from "../layout/section-wrapper";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { Reveal } from "../ui/reveal";
@@ -34,7 +35,7 @@ export function Contact() {
   });
 
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-6 py-24">
+    <SectionWrapper id="contact">
       <Reveal>
         <span className="text-muted font-mono text-xs tracking-widest">
           SEC.06 — CONTACT
@@ -151,6 +152,6 @@ export function Contact() {
           </form.Subscribe>
         </form>
       </Reveal>
-    </section>
+    </SectionWrapper>
   );
 }

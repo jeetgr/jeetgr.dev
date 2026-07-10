@@ -1,10 +1,11 @@
 import { skillGroups } from "@/data/skills";
 
+import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
 
 export function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-6 py-24">
+    <SectionWrapper id="skills">
       <Reveal>
         <span className="text-muted font-mono text-xs tracking-widest">
           SEC.03 — SKILLS
@@ -31,6 +32,6 @@ export function Skills() {
           ))}
         </div>
       </Reveal>
-    </section>
+    </SectionWrapper>
   );
 }
