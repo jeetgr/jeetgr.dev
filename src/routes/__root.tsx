@@ -6,9 +6,14 @@ import { MotionConfig } from "motion/react";
 import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { getThemeServerFn } from "@/lib/theme";
+import {
+  ThemeProvider,
+  useHtmlClass,
+} from "@/components/layout/theme-provider";
 
 import appCss from "../styles.css?url";
+
+const THEME_BOOTSTRAP = `(function(){try{var t=localStorage.getItem('theme')||'auto';var v=['light','dark','auto'].includes(t)?t:'auto';var r=v==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):v;document.documentElement.classList.add(r);if(v==='auto')document.documentElement.classList.add('auto');document.documentElement.style.colorScheme=r}catch(e){var r=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.classList.add(r,'auto');document.documentElement.style.colorScheme=r}})()`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -47,23 +52,28 @@ export const Route = createRootRoute({
       { rel: "apple-touch-icon", href: "/favicon-256.png" },
     ],
   }),
-  beforeLoad: async () => ({ theme: await getThemeServerFn() }),
   shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { theme } = Route.useRouteContext();
+  const htmlClass = useHtmlClass();
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" className={htmlClass} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }}
+          suppressHydrationWarning
+        />
         <HeadContent />
       </head>
       <body>
         <MotionConfig reducedMotion="user">
-          <Navbar />
-          {children}
-          <Footer />
-          <AppToaster />
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <AppToaster />
+          </ThemeProvider>
         </MotionConfig>
         <TanStackDevtools
           config={{

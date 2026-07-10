@@ -6,16 +6,17 @@
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
 
-@custom-variant dark {
-  &:is(.dark *) {
-    @slot;
-  }
+@custom-variant dark (&:is(.dark, .dark *));
+@custom-variant light (&:is(.light, .light *));
+@custom-variant auto (&:is(.auto, .auto *));
 
-  @media (prefers-color-scheme: dark) {
-    &:is(.auto *) {
-      @slot;
-    }
-  }
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
 }
 
 @theme {
@@ -70,33 +71,6 @@
 
   --color-destructive: oklch(65% 0.2 25);
   --color-destructive-foreground: oklch(97% 0.005 90);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:is(.auto) {
-    --color-background: oklch(15% 0.02 264);
-    --color-foreground: oklch(95% 0.005 90);
-
-    --color-surface: oklch(20% 0.02 264);
-    --color-surface-foreground: oklch(92% 0.005 90);
-
-    --color-border: oklch(30% 0.02 264);
-    --color-border-strong: oklch(38% 0.03 264);
-
-    --color-primary: oklch(70% 0.13 260);
-    --color-primary-foreground: oklch(15% 0.02 264);
-
-    --color-accent: oklch(70% 0.13 75);
-    --color-accent-foreground: oklch(15% 0.02 264);
-
-    --color-muted: oklch(65% 0.01 264);
-
-    --color-signal: oklch(65% 0.06 150);
-    --color-signal-foreground: oklch(15% 0.02 264);
-
-    --color-destructive: oklch(65% 0.2 25);
-    --color-destructive-foreground: oklch(97% 0.005 90);
-  }
 }
 
 body {
