@@ -27,7 +27,7 @@ export function About() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <FactRow label="Based in" value="Kashipur, India" />
+            <FactRow label="Based in" value="Uttarakhand, India" />
             <FactRow label="Experience" value="2+ years" />
             <FactRow
               label="Currently"
