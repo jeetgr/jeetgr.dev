@@ -2,17 +2,16 @@ import { experience } from "@/data/experience";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
+import { SectionLabel } from "../ui/section-label";
 
 export function Experience() {
   return (
     <SectionWrapper id="experience">
       <Reveal>
-        <span className="text-muted font-mono text-xs tracking-widest">
-          SEC.05 — EXPERIENCE
-        </span>
+        <SectionLabel index={5} label="EXPERIENCE" />
 
         <h2 className="font-display text-foreground mt-6 text-3xl font-medium md:text-4xl">
-          Where I've worked.
+          Experience
         </h2>
 
         <div className="mt-12 flex flex-col">

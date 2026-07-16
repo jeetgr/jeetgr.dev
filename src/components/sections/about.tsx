@@ -1,18 +1,17 @@
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
+import { SectionLabel } from "../ui/section-label";
 
 export function About() {
   return (
     <SectionWrapper id="about">
       <Reveal>
-        <span className="text-muted font-mono text-xs tracking-widest">
-          SEC.02 — ABOUT
-        </span>
+        <SectionLabel index={2} label="ABOUT" />
 
         <div className="mt-6 grid gap-12 md:grid-cols-[1.3fr_1fr]">
           <div>
             <h2 className="font-display text-foreground text-3xl font-medium md:text-4xl">
-              Full-stack developer, end to end.
+              Production software, not slide decks.
             </h2>
             <p className="text-muted mt-6 leading-relaxed">
               2+ years building production apps at Zanthium Technosoft — React

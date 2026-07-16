@@ -25,13 +25,13 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Full-stack web developer specializing in React, Node.js, and PostgreSQL. Building fast, reliable applications end to end.",
+          "Full-stack developer working with React, Node.js, and PostgreSQL. Based in Uttarakhand, India.",
       },
       { property: "og:title", content: "Jeet Gangwar — Full-Stack Developer" },
       {
         property: "og:description",
         content:
-          "Full-stack web developer specializing in React, Node.js, and PostgreSQL. Building fast, reliable applications end to end.",
+          "Full-stack developer working with React, Node.js, and PostgreSQL. Based in Uttarakhand, India.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://jeetgr.dev" },
@@ -41,7 +41,7 @@ export const Route = createRootRoute({
       {
         name: "twitter:description",
         content:
-          "Full-stack web developer specializing in React, Node.js, and PostgreSQL.",
+          "Full-stack developer working with React, Node.js, and PostgreSQL.",
       },
       { name: "twitter:image", content: "https://jeetgr.dev/og-image.png" },
     ],

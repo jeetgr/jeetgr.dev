@@ -2,17 +2,16 @@ import { skillGroups } from "@/data/skills";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
+import { SectionLabel } from "../ui/section-label";
 
 export function Skills() {
   return (
     <SectionWrapper id="skills">
       <Reveal>
-        <span className="text-muted font-mono text-xs tracking-widest">
-          SEC.03 — SKILLS
-        </span>
+        <SectionLabel index={3} label="SKILLS" />
 
         <h2 className="font-display text-foreground mt-6 text-3xl font-medium md:text-4xl">
-          What I work with.
+          Stack
         </h2>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">

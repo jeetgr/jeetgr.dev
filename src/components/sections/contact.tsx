@@ -10,6 +10,7 @@ import { SectionWrapper } from "../layout/section-wrapper";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { Reveal } from "../ui/reveal";
+import { SectionLabel } from "../ui/section-label";
 import { Textarea } from "../ui/textarea";
 
 const defaultValues: ContactSubmitValues = {
@@ -42,16 +43,13 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <Reveal>
-        <span className="text-muted font-mono text-xs tracking-widest">
-          SEC.06 — CONTACT
-        </span>
+        <SectionLabel index={6} label="CONTACT" />
 
         <h2 className="font-display text-foreground mt-6 text-3xl font-medium md:text-4xl">
-          Let's work together.
+          Get in touch
         </h2>
         <p className="text-muted mt-4 max-w-md">
-          Have a project in mind or just want to say hi? Send a message and I'll
-          get back to you.
+          Project, question, or just want to chat — send a message.
         </p>
 
         <form

@@ -2,17 +2,16 @@ import { projects } from "@/data/projects";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
+import { SectionLabel } from "../ui/section-label";
 
 export function Projects() {
   return (
     <SectionWrapper id="projects">
       <Reveal>
-        <span className="text-muted font-mono text-xs tracking-widest">
-          SEC.04 — PROJECTS
-        </span>
+        <SectionLabel index={4} label="PROJECTS" />
 
         <h2 className="font-display text-foreground mt-6 text-3xl font-medium md:text-4xl">
-          Things I've built.
+          Projects
         </h2>
 
         <div className="mt-12 flex flex-col gap-16">
