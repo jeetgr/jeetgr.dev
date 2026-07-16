@@ -3,6 +3,7 @@ import { Resend } from "resend";
 
 import { env } from "@/env";
 import { contactSubmitSchema } from "@/lib/contact-schema";
+import { sanitizeEmailHeaderValue } from "@/lib/utils";
 import { contactRateLimitMiddleware } from "@/middleware/contact-rate-limit";
 
 import ContactEmail from "../../emails/contact-email";
@@ -23,7 +24,7 @@ export const sendContactEmail = createServerFn({ method: "POST" })
       from: "jeetgr.dev <hello@jeetgr.dev>",
       to: "hello@jeetgr.dev",
       replyTo: email,
-      subject: `New message from ${name}`,
+      subject: `New message from ${sanitizeEmailHeaderValue(name)}`,
       react: ContactEmail({ name, email, message }),
     });
 
