@@ -2,6 +2,8 @@ import { Monitor, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { IconSvgElement } from "@hugeicons/react";
 
+import { cn } from "@/lib/utils";
+
 import { useTheme } from "./theme-provider";
 import type { ThemeMode } from "./theme-provider";
 
@@ -33,11 +35,12 @@ export function ThemeToggle() {
           onClick={() => {
             setTheme(value);
           }}
-          className={`rounded-md p-1.5 transition-colors ${
+          className={cn(
+            "rounded-md p-1.5 transition-colors",
             activeTheme === value
               ? "bg-primary text-primary-foreground"
               : "text-muted hover:text-foreground"
-          }`}
+          )}
         >
           <HugeiconsIcon icon={icon} className="size-4" />
         </button>
