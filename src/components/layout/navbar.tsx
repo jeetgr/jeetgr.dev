@@ -1,6 +1,6 @@
 import { Menu, X } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
@@ -12,8 +12,28 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
+const mobileNavId = "mobile-nav";
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    // oxlint-disable-next-line typescript/consistent-return
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
 
   return (
     <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
@@ -44,6 +64,8 @@ export function Navbar() {
         <button
           type="button"
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls={mobileNavId}
           className="text-foreground md:hidden"
           onClick={() => {
             setOpen((v) => !v);
@@ -58,7 +80,10 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-border border-t px-6 py-4 md:hidden">
+        <div
+          id={mobileNavId}
+          className="border-border border-t px-6 py-4 md:hidden"
+        >
           <div className="flex flex-col gap-4">
             {links.map((link) => (
               <a
