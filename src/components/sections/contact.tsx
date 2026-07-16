@@ -123,7 +123,7 @@ export function Contact() {
                     <Input
                       id={field.name}
                       name={field.name}
-                      type="text"
+                      type="email"
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => {
