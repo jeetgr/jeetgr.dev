@@ -14,4 +14,11 @@ export const contactSchema = v.object({
   ),
 });
 
+/** Includes the honeypot field sent to the server. */
+export const contactSubmitSchema = v.object({
+  ...contactSchema.entries,
+  website: v.optional(v.string(), ""),
+});
+
 export type ContactFormValues = v.InferOutput<typeof contactSchema>;
+export type ContactSubmitValues = v.InferOutput<typeof contactSubmitSchema>;

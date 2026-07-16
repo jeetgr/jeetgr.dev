@@ -1,9 +1,10 @@
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
+import * as v from "valibot";
 
 import { sendContactEmail } from "@/functions/send-contact-email";
 import { contactSchema } from "@/lib/contact-schema";
-import type { ContactFormValues } from "@/lib/contact-schema";
+import type { ContactSubmitValues } from "@/lib/contact-schema";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
@@ -11,17 +12,21 @@ import { Input } from "../ui/input";
 import { Reveal } from "../ui/reveal";
 import { Textarea } from "../ui/textarea";
 
-const defaultValues: ContactFormValues = {
+const defaultValues: ContactSubmitValues = {
   name: "",
   email: "",
   message: "",
+  website: "",
 };
 
 export function Contact() {
   const form = useForm({
     defaultValues,
     validators: {
-      onSubmit: contactSchema,
+      onSubmit: ({ value }) => {
+        const result = v.safeParse(contactSchema, value);
+        return result.success ? undefined : result.issues;
+      },
     },
     onSubmit: async ({ value }) => {
       try {
@@ -57,6 +62,29 @@ export function Contact() {
           }}
           className="mt-10 max-w-lg"
         >
+          <form.Field
+            name="website"
+            children={(field) => (
+              <div
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+              >
+                <label htmlFor={field.name}>Website</label>
+                <input
+                  id={field.name}
+                  name={field.name}
+                  type="text"
+                  value={field.state.value}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  onChange={(e) => {
+                    field.handleChange(e.target.value);
+                  }}
+                />
+              </div>
+            )}
+          />
+
           <FieldGroup>
             <form.Field
               name="name"
