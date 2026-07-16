@@ -57,7 +57,7 @@ export function Projects() {
                   <a
                     href={project.live}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="text-primary text-sm font-medium hover:underline"
                   >
                     Live site ↗
@@ -65,7 +65,7 @@ export function Projects() {
                   <a
                     href={project.github}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="text-foreground text-sm font-medium hover:underline"
                   >
                     Source ↗
