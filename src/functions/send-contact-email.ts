@@ -1,3 +1,4 @@
+import ContactEmail from "@emails/contact-email";
 import { createServerFn } from "@tanstack/react-start";
 import { Resend } from "resend";
 
@@ -5,8 +6,6 @@ import { env } from "@/env";
 import { contactSubmitSchema } from "@/lib/contact-schema";
 import { sanitizeEmailHeaderValue } from "@/lib/utils";
 import { contactRateLimitMiddleware } from "@/middleware/contact-rate-limit";
-
-import ContactEmail from "../../emails/contact-email";
 
 const resend = new Resend(env.RESEND_API_KEY);
 
