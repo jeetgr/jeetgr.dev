@@ -1,5 +1,6 @@
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal } from "../ui/reveal";
+import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
 
 export function About() {
@@ -10,9 +11,9 @@ export function About() {
 
         <div className="mt-6 grid gap-12 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <h2 className="font-display text-foreground text-3xl font-medium md:text-4xl">
+            <SectionHeading className="mt-0">
               Production software, not slide decks.
-            </h2>
+            </SectionHeading>
             <p className="text-muted mt-6 leading-relaxed">
               2+ years building production apps at Zanthium Technosoft — React
               and Node.js on top, PostgreSQL/MySQL underneath, Docker and Nginx

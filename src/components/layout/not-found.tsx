@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { buttonVariants } from "@/components/ui/button";
 import { SectionLabel } from "@/components/ui/section-label";
 
 export function NotFound() {
@@ -15,7 +16,7 @@ export function NotFound() {
 
       <Link
         to="/"
-        className="bg-primary text-primary-foreground mt-8 rounded-md px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
+        className={buttonVariants({ size: "md", className: "mt-8" })}
       >
         Back to home
       </Link>

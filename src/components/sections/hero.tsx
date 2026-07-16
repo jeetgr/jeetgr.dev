@@ -1,4 +1,5 @@
 import { SectionWrapper } from "../layout/section-wrapper";
+import { buttonVariants } from "../ui/button";
 import { Reveal } from "../ui/reveal";
 import { SectionLabel } from "../ui/section-label";
 
@@ -32,14 +33,14 @@ export function Hero() {
         <div className="mt-10 flex gap-4">
           <a
             href="#projects"
-            className="bg-primary text-primary-foreground rounded-md px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
+            className={buttonVariants({ variant: "primary" })}
           >
             View projects
           </a>
           <a
             href="/resume.pdf"
             download="Jeet-Gangwar-Fullstack-Developer.pdf"
-            className="border-border text-foreground hover:bg-surface rounded-md border px-5 py-2.5 text-sm font-medium transition-colors"
+            className={buttonVariants({ variant: "outline" })}
           >
             Download resume
           </a>

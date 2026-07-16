@@ -7,9 +7,11 @@ import { contactSchema } from "@/lib/contact-schema";
 import type { ContactSubmitValues } from "@/lib/contact-schema";
 
 import { SectionWrapper } from "../layout/section-wrapper";
+import { Button } from "../ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { Reveal } from "../ui/reveal";
+import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
 import { Textarea } from "../ui/textarea";
 
@@ -45,9 +47,7 @@ export function Contact() {
       <Reveal>
         <SectionLabel index={6} label="CONTACT" />
 
-        <h2 className="font-display text-foreground mt-6 text-3xl font-medium md:text-4xl">
-          Get in touch
-        </h2>
+        <SectionHeading>Get in touch</SectionHeading>
         <p className="text-muted mt-4 max-w-md">
           Project, question, or just want to chat — send a message.
         </p>
@@ -167,13 +167,14 @@ export function Contact() {
 
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {(isSubmitting) => (
-              <button
+              <Button
                 type="submit"
+                size="md"
                 disabled={isSubmitting}
-                className="bg-primary text-primary-foreground mt-6 w-fit rounded-md px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="mt-6 w-fit"
               >
                 {isSubmitting ? "Sending..." : "Send message"}
-              </button>
+              </Button>
             )}
           </form.Subscribe>
         </form>
