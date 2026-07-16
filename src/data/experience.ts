@@ -1,5 +1,6 @@
 export const experience = [
   {
+    id: "zanthium-fullstack",
     role: "Full-Stack Web Developer",
     company: "Zanthium Technosoft Pvt Ltd",
     location: "Rudrapur, Uttarakhand",
@@ -12,6 +13,7 @@ export const experience = [
     ],
   },
   {
+    id: "zanthium-php-backend",
     role: "PHP Backend Developer",
     company: "Zanthium Technosoft Pvt Ltd",
     location: "Rudrapur, Uttarakhand",

@@ -18,7 +18,7 @@ export function Experience() {
         <div className="mt-12 flex flex-col">
           {experience.map((job) => (
             <div
-              key={job.period}
+              key={job.id}
               className="border-border grid gap-4 border-t py-8 first:border-t-0 md:grid-cols-[140px_1fr]"
             >
               <p className="text-muted font-mono text-xs">{job.period}</p>
