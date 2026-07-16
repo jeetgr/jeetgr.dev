@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   useHtmlClass,
 } from "@/components/layout/theme-provider";
+import { personJsonLd } from "@/lib/json-ld";
 
 import appCss from "../styles.css?url";
 
@@ -50,6 +51,12 @@ export const Route = createRootRoute({
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon-256.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/favicon-256.png" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(personJsonLd),
+      },
     ],
   }),
   shellComponent: RootDocument,
