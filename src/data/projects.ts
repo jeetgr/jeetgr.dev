@@ -7,6 +7,8 @@ export const projects = [
     live: "https://myr.jeetgr.dev",
     github: "https://github.com/jeetgr/makeyourresume",
     image: "/projects/make-your-resume.webp",
+    imageWidth: 1921,
+    imageHeight: 1081,
   },
   {
     title: "Promptopia",
@@ -16,5 +18,7 @@ export const projects = [
     live: "https://promptopia.jeetgr.dev",
     github: "https://github.com/jeetgr/promptopia",
     image: "/projects/promptopia.webp",
+    imageWidth: 1921,
+    imageHeight: 1081,
   },
 ] as const;

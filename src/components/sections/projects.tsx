@@ -25,6 +25,8 @@ export function Projects() {
                 <img
                   src={project.image}
                   alt={`${project.title} screenshot`}
+                  width={project.imageWidth}
+                  height={project.imageHeight}
                   loading="lazy"
                   decoding="async"
                   className="border-border aspect-video w-full rounded-lg border object-cover"
