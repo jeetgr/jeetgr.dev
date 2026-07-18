@@ -55,7 +55,23 @@ html.theme-switching *::after {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* Light personality — an airy daylight blueprint: soft glow, a faint drafting
+   grid, and almost no vignette. */
+:root {
+  --atm-glow-opacity: 0.55;
+  --atm-vignette: color-mix(in oklab, var(--color-primary) 9%, transparent);
+  --atm-grid-opacity: 0.5;
+  --atm-grain-opacity: 0.03;
+}
+
 .dark {
+  /* Dark personality — a moody night-ops console: a strong cyan glow bleeding
+     from the top, a deep vignette, no grid, and heavier grain. */
+  --atm-glow-opacity: 1;
+  --atm-vignette: rgb(0 0 0 / 0.32);
+  --atm-grid-opacity: 0;
+  --atm-grain-opacity: 0.05;
+
   /* Cyber — deep navy */
   --color-background: oklch(17% 0.045 255);
   --color-foreground: oklch(94% 0.02 210);
@@ -206,4 +222,44 @@ textarea {
     background-image: none;
     color: var(--color-primary);
   }
+}
+
+/* Ambient backdrop layers. Each reads theme-scoped --atm-* vars so light and
+   dark render with distinct personalities. */
+.atmosphere-glow {
+  opacity: var(--atm-glow-opacity);
+  background: radial-gradient(
+    60% 45% at 50% -5%,
+    color-mix(in oklab, var(--color-primary) 22%, transparent),
+    transparent 70%
+  );
+}
+
+.atmosphere-vignette {
+  background: radial-gradient(
+    120% 110% at 50% 42%,
+    transparent 55%,
+    var(--atm-vignette) 100%
+  );
+}
+
+.atmosphere-grid {
+  opacity: var(--atm-grid-opacity);
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-border) 70%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-border) 70%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 46px 46px;
+  mask-image: radial-gradient(75% 65% at 50% 28%, #000, transparent 82%);
+}
+
+.atmosphere-grain {
+  opacity: var(--atm-grain-opacity);
 }

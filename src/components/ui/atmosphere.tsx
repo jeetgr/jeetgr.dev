@@ -1,27 +1,17 @@
 /**
- * Ambient page backdrop: a soft primary-tinted glow, a gentle edge vignette,
- * and a fine film grain for depth. Purely decorative, sits behind all content,
- * and reads theme tokens so it adapts to light/dark.
+ * Ambient page backdrop. Composed of theme-scoped layers so light and dark
+ * feel like different places: light is an airy daylight blueprint (faint
+ * drafting grid, soft glow), dark is a moody night-ops console (strong glow,
+ * deep vignette). Purely decorative and sits behind all content.
  */
 export function Atmosphere() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(60% 45% at 50% -5%, color-mix(in oklab, var(--color-primary) 20%, transparent), transparent 70%)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 110% at 50% 42%, transparent 58%, rgb(0 0 0 / 0.22) 100%)",
-        }}
-      />
+      <div className="atmosphere-glow absolute inset-0" />
+      <div className="atmosphere-grid absolute inset-0" />
+      <div className="atmosphere-vignette absolute inset-0" />
       <svg
-        className="text-foreground absolute inset-0 h-full w-full opacity-[0.045]"
+        className="atmosphere-grain text-foreground absolute inset-0 h-full w-full"
         xmlns="http://www.w3.org/2000/svg"
       >
         <filter id="atmosphere-grain">
