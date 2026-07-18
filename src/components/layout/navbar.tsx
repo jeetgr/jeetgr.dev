@@ -1,37 +1,9 @@
 import { Menu, X } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-} from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
-
-/**
- * Isolated so the scroll subscription re-renders only this readout, not the
- * whole navbar (which would make the shared-layout marker jump).
- */
-function ElevationReadout() {
-  const { scrollYProgress } = useScroll();
-  const [elevation, setElevation] = useState(0);
-
-  useMotionValueEvent(scrollYProgress, "change", (value) => {
-    setElevation(Math.round(value * 100));
-  });
-
-  return (
-    <span
-      className="coord tabular-nums"
-      aria-hidden="true"
-      title="Scroll position"
-    >
-      ELEV {String(elevation).padStart(3, "0")}%
-    </span>
-  );
-}
 
 const links = [
   { href: "#about", label: "About" },
@@ -142,7 +114,6 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <ElevationReadout />
           <ThemeToggle />
         </div>
 

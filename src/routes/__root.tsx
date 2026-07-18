@@ -12,6 +12,7 @@ import {
 } from "@/components/layout/theme-provider";
 import { Atmosphere } from "@/components/ui/atmosphere";
 import { CursorCrosshair } from "@/components/ui/cursor-crosshair";
+import { ScrollGauge } from "@/components/ui/scroll-gauge";
 import { personJsonLd } from "@/lib/json-ld";
 
 import appCss from "../styles.css?url";
@@ -84,6 +85,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Footer />
             <AppToaster />
             <CursorCrosshair />
+            <ScrollGauge />
           </ThemeProvider>
         </MotionConfig>
         <TanStackDevtools
