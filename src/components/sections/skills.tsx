@@ -7,6 +7,7 @@ import { SectionWrapper } from "../layout/section-wrapper";
 import { Reveal, RevealItem } from "../ui/reveal";
 import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
+import { Tile } from "../ui/tile";
 
 const roles: Record<string, string> = {
   Frontend: "the part people see",
@@ -28,20 +29,20 @@ export function Skills() {
           <SectionHeading>What I work with.</SectionHeading>
         </RevealItem>
 
-        <div className="border-border mt-12 border-t">
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <RevealItem
+            <Tile
               key={group.category}
-              className="border-border grid gap-3 border-b py-6 md:grid-cols-[16rem_1fr] md:gap-10"
+              className={group.category === "Frontend" ? "sm:col-span-2" : ""}
             >
-              <div>
+              <div className="flex items-baseline justify-between gap-4">
                 <h3 className="font-display text-foreground text-xl font-medium">
                   {group.category}
                 </h3>
-                <p className="coord mt-1 not-italic">{roles[group.category]}</p>
+                <p className="coord not-italic">{roles[group.category]}</p>
               </div>
               <motion.ul
-                className="flex flex-wrap gap-x-6 gap-y-2 md:pt-1"
+                className="mt-5 flex flex-wrap gap-x-5 gap-y-2"
                 variants={reduced ? fadeOnly : staggerContainer(0.04)}
               >
                 {group.items.map((item) => (
@@ -55,7 +56,7 @@ export function Skills() {
                   </motion.li>
                 ))}
               </motion.ul>
-            </RevealItem>
+            </Tile>
           ))}
         </div>
       </Reveal>
