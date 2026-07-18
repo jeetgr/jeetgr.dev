@@ -1,10 +1,9 @@
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
-import * as v from "valibot";
 
 import { sendContactEmail } from "@/functions/send-contact-email";
 import { contactSchema } from "@/lib/contact-schema";
-import type { ContactSubmitValues } from "@/lib/contact-schema";
+import type { ContactFormValues } from "@/lib/contact-schema";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Button } from "../ui/button";
@@ -15,7 +14,7 @@ import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
 import { Textarea } from "../ui/textarea";
 
-const defaultValues: ContactSubmitValues = {
+const defaultValues: ContactFormValues = {
   name: "",
   email: "",
   message: "",
@@ -26,10 +25,7 @@ export function Contact() {
   const form = useForm({
     defaultValues,
     validators: {
-      onSubmit: ({ value }) => {
-        const result = v.safeParse(contactSchema, value);
-        return result.success ? undefined : result.issues;
-      },
+      onSubmit: contactSchema,
     },
     onSubmit: async ({ value }) => {
       try {
@@ -45,15 +41,14 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <Reveal>
-        <SectionLabel index={6} label="Contact" />
+        <SectionLabel index={6} label="Send a signal" />
 
         <div className="mt-6 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <SectionHeading className="mt-0">Say hello.</SectionHeading>
             <p className="text-muted mt-6 max-w-md leading-7">
-              Whether it&apos;s a job, a project, or just a hello, send a
-              message. It comes straight to my inbox and I&apos;ll get back to
-              you.
+              A role, a project, or something interesting on the web — send a
+              note and I&apos;ll read it. Every message reaches me directly.
             </p>
             <a
               href="mailto:hello@jeetgr.dev"

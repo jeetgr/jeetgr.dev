@@ -12,13 +12,7 @@ export const contactSchema = v.object({
     v.minLength(10, "Message is too short"),
     v.maxLength(2000)
   ),
-});
-
-/** Includes the honeypot field sent to the server. */
-export const contactSubmitSchema = v.object({
-  ...contactSchema.entries,
   website: v.optional(v.string(), ""),
 });
 
-export type ContactFormValues = v.InferOutput<typeof contactSchema>;
-export type ContactSubmitValues = v.InferOutput<typeof contactSubmitSchema>;
+export type ContactFormValues = v.InferInput<typeof contactSchema>;

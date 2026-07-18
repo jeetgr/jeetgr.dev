@@ -3,7 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { Resend } from "resend";
 
 import { env } from "@/env";
-import { contactSubmitSchema } from "@/lib/contact-schema";
+import { contactSchema } from "@/lib/contact-schema";
 import { sanitizeEmailHeaderValue } from "@/lib/utils";
 import { contactRateLimitMiddleware } from "@/middleware/contact-rate-limit";
 
@@ -11,7 +11,7 @@ const resend = new Resend(env.RESEND_API_KEY);
 
 export const sendContactEmail = createServerFn({ method: "POST" })
   .middleware([contactRateLimitMiddleware])
-  .validator(contactSubmitSchema)
+  .validator(contactSchema)
   .handler(async ({ data }) => {
     if (data.website) {
       return { success: true };
