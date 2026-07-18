@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   useHtmlClass,
 } from "@/components/layout/theme-provider";
+import { Atmosphere } from "@/components/ui/atmosphere";
 import { CursorCrosshair } from "@/components/ui/cursor-crosshair";
 import { personJsonLd } from "@/lib/json-ld";
 
@@ -77,6 +78,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <MotionConfig reducedMotion="user">
           <ThemeProvider>
+            <Atmosphere />
             <Navbar />
             {children}
             <Footer />

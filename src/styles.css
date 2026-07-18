@@ -78,6 +78,7 @@ html.theme-switching *::after {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overscroll-behavior-y: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
