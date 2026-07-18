@@ -43,14 +43,16 @@ export function ProjectCard({
   });
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (reduced) {
-      return;
-    }
     const el = ref.current;
     if (!el) {
       return;
     }
     const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    if (reduced) {
+      return;
+    }
     px.set((event.clientX - rect.left) / rect.width - 0.5);
     py.set((event.clientY - rect.top) / rect.height - 0.5);
   };
@@ -72,7 +74,7 @@ export function ProjectCard({
               ? undefined
               : { rotateX, rotateY, transformPerspective: 900 }
           }
-          className="border-border group-hover:border-border-strong bg-surface relative border p-2 transition-colors duration-300"
+          className="spotlight border-border group-hover:border-border-strong bg-surface relative border p-2 transition-colors duration-300"
         >
           <img
             src={project.image}

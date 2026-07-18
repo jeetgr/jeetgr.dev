@@ -129,6 +129,36 @@ textarea {
   );
 }
 
+/* Cursor-following glow; position driven by --mx/--my from useSpotlight. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--color-accent) 22%, transparent),
+    transparent 62%
+  );
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight::after {
+    transition: none;
+  }
+}
+
 .project-plate:hover .project-image {
   transform: translateY(-4px);
 }
