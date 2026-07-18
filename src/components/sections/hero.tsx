@@ -39,12 +39,12 @@ export function Hero() {
             animate={reduced ? undefined : { opacity: [1, 0.25, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
-          30.07° N · 79.02° E — Uttarakhand, India
+          Uttarakhand, India
         </motion.p>
 
         <h1 className="font-display text-foreground mt-6 text-[clamp(3rem,8.5vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.03em]">
           <Line reduced={reduced}>
-            Jeet Gangwar — <span className="text-primary">full-stack</span>
+            Jeet Gangwar — <span className="shimmer-word">full-stack</span>
           </Line>
           <Line reduced={reduced}>developer.</Line>
         </h1>
