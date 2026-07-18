@@ -12,7 +12,10 @@ export function ContourRule({ className }: { className?: string }) {
 
   if (reduced) {
     return (
-      <div className={cn("contour-rule w-full", className)} aria-hidden="true" />
+      <div
+        className={cn("contour-rule w-full", className)}
+        aria-hidden="true"
+      />
     );
   }
 
