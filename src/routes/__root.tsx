@@ -1,7 +1,8 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { MotionConfig } from "motion/react";
+import { ReactLenis } from "lenis/react";
+import { MotionConfig, useReducedMotion } from "motion/react";
 
 import { AppToaster } from "@/components/layout/app-toaster";
 import { Footer } from "@/components/layout/footer";
@@ -67,6 +68,8 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const htmlClass = useHtmlClass();
+  const reduced = useReducedMotion() ?? false;
+
   return (
     <html lang="en" className={htmlClass} suppressHydrationWarning>
       <head>
@@ -78,15 +81,29 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <MotionConfig reducedMotion="user">
-          <ThemeProvider>
-            <Atmosphere />
-            <Navbar />
-            {children}
-            <Footer />
-            <AppToaster />
-            <CursorCrosshair />
-            <ScrollGauge />
-          </ThemeProvider>
+          <ReactLenis
+            root
+            options={{
+              // Lerp mode: lower = floatier glide (0.1 is the default).
+              lerp: 0.075,
+              wheelMultiplier: 1.1,
+              // Native scrolling for reduced-motion users; no momentum.
+              smoothWheel: !reduced,
+              syncTouch: false,
+              // Handle in-page #anchors, offset for the fixed navbar.
+              anchors: { offset: -80, immediate: reduced },
+            }}
+          >
+            <ThemeProvider>
+              <Atmosphere />
+              <Navbar />
+              {children}
+              <Footer />
+              <AppToaster />
+              <CursorCrosshair />
+              <ScrollGauge />
+            </ThemeProvider>
+          </ReactLenis>
         </MotionConfig>
         <TanStackDevtools
           config={{

@@ -58,14 +58,6 @@ export function CursorCrosshair() {
       className="pointer-events-none fixed inset-0 z-100"
       style={{ opacity }}
     >
-      <motion.div
-        className="bg-accent/15 absolute top-0 h-full w-px"
-        style={{ x }}
-      />
-      <motion.div
-        className="bg-accent/15 absolute left-0 h-px w-full"
-        style={{ y }}
-      />
       <motion.div className="absolute top-0 left-0" style={{ x, y }}>
         <span className="border-accent absolute top-[-3px] left-[-3px] size-1.5 rotate-45 border" />
         <div className="text-accent bg-background/70 border-border absolute top-3 left-3 rounded-sm border px-1.5 py-0.5 font-mono text-[0.6rem] leading-tight tracking-tight tabular-nums backdrop-blur-sm">
