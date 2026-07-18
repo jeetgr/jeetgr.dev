@@ -2,6 +2,8 @@ import type React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { ContourRule } from "../ui/contour-rule";
+
 export function SectionWrapper({
   className,
   divider = true,
@@ -16,9 +18,7 @@ export function SectionWrapper({
       )}
       {...props}
     >
-      {divider && (
-        <div className="contour-rule mb-14 w-full" aria-hidden="true" />
-      )}
+      {divider && <ContourRule className="mb-14" />}
       {children}
     </section>
   );
