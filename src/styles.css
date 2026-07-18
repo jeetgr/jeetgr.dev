@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/schibsted-grotesk";
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
 @import "@fontsource/inter/latin-600.css";
@@ -20,57 +20,59 @@ html.theme-switching *::after {
 }
 
 @theme {
-  --color-background: oklch(97.5% 0.012 88);
-  --color-foreground: oklch(21% 0.025 255);
+  /* Cyber — daylight */
+  --color-background: oklch(98% 0.012 210);
+  --color-foreground: oklch(22% 0.05 240);
 
-  --color-surface: oklch(94.5% 0.016 88);
-  --color-surface-foreground: oklch(21% 0.025 255);
+  --color-surface: oklch(95.5% 0.02 205);
+  --color-surface-foreground: oklch(22% 0.05 240);
 
-  --color-border: oklch(84% 0.02 88);
-  --color-border-strong: oklch(65% 0.035 88);
+  --color-border: oklch(90% 0.02 210);
+  --color-border-strong: oklch(66% 0.08 220);
 
-  --color-primary: oklch(50% 0.15 258);
-  --color-primary-foreground: oklch(98% 0.008 88);
+  --color-primary: oklch(52% 0.16 235);
+  --color-primary-foreground: oklch(99% 0.008 210);
 
-  --color-accent: oklch(62% 0.15 48);
-  --color-accent-foreground: oklch(98% 0.008 88);
+  --color-accent: oklch(72% 0.16 200);
+  --color-accent-foreground: oklch(20% 0.05 240);
 
-  --color-muted: oklch(48% 0.025 255);
+  --color-muted: oklch(48% 0.04 230);
 
-  --color-signal: oklch(67% 0.15 155);
-  --color-signal-foreground: oklch(18% 0.03 258);
+  --color-signal: oklch(60% 0.13 180);
+  --color-signal-foreground: oklch(99% 0.008 210);
 
-  --color-destructive: oklch(55% 0.2 25);
-  --color-destructive-foreground: oklch(97% 0.005 90);
+  --color-destructive: oklch(55% 0.19 27);
+  --color-destructive-foreground: oklch(98% 0.008 210);
 
-  --font-display: "Bricolage Grotesque Variable", sans-serif;
+  --font-display: "Schibsted Grotesk Variable", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 .dark {
-  --color-background: oklch(17% 0.025 255);
-  --color-foreground: oklch(93% 0.015 88);
+  /* Cyber — deep navy */
+  --color-background: oklch(17% 0.045 255);
+  --color-foreground: oklch(94% 0.02 210);
 
-  --color-surface: oklch(21% 0.025 255);
-  --color-surface-foreground: oklch(93% 0.015 88);
+  --color-surface: oklch(22% 0.05 255);
+  --color-surface-foreground: oklch(94% 0.02 210);
 
-  --color-border: oklch(31% 0.025 255);
-  --color-border-strong: oklch(43% 0.03 255);
+  --color-border: oklch(31% 0.055 250);
+  --color-border-strong: oklch(46% 0.1 235);
 
-  --color-primary: oklch(72% 0.12 255);
-  --color-primary-foreground: oklch(17% 0.035 258);
+  --color-primary: oklch(82% 0.16 200);
+  --color-primary-foreground: oklch(17% 0.05 255);
 
-  --color-accent: oklch(72% 0.13 50);
-  --color-accent-foreground: oklch(17% 0.035 258);
+  --color-accent: oklch(84% 0.15 195);
+  --color-accent-foreground: oklch(17% 0.05 255);
 
-  --color-muted: oklch(70% 0.025 250);
+  --color-muted: oklch(73% 0.04 220);
 
-  --color-signal: oklch(72% 0.14 155);
-  --color-signal-foreground: oklch(17% 0.035 258);
+  --color-signal: oklch(78% 0.13 185);
+  --color-signal-foreground: oklch(17% 0.05 255);
 
-  --color-destructive: oklch(65% 0.2 25);
-  --color-destructive-foreground: oklch(97% 0.005 90);
+  --color-destructive: oklch(68% 0.18 27);
+  --color-destructive-foreground: oklch(98% 0.008 210);
 }
 
 html {
@@ -89,27 +91,61 @@ body {
 }
 
 ::selection {
-  @apply bg-primary text-primary-foreground;
+  @apply bg-accent text-accent-foreground;
 }
 
 a,
 button,
 input,
 textarea {
-  @apply focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-4;
+  @apply focus-visible:outline-accent focus-visible:outline-2 focus-visible:outline-offset-4;
 }
 
-.section-shell {
-  @apply relative;
+/* Survey-map legend key used for section markers */
+.legend-key {
+  @apply text-muted inline-flex items-center gap-2.5 font-mono text-xs tracking-[0.12em] uppercase;
 }
 
-.section-shell::before {
+.legend-key::before {
   content: "";
-  @apply bg-border absolute top-0 right-5 left-5 h-px sm:right-8 sm:left-8 lg:right-12 lg:left-12;
+  @apply border-accent size-2.5 shrink-0 rotate-45 border;
 }
 
-.project-card:hover .project-image {
-  transform: translateY(-3px);
+/* Coordinate / annotation type */
+.coord {
+  @apply text-muted font-mono text-xs tracking-tight tabular-nums;
+}
+
+/* Thin contour rule that separates sections like map elevation lines */
+.contour-rule {
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0,
+    var(--color-border) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.contour-field {
+  color: color-mix(in oklab, var(--color-primary) 32%, transparent);
+  /* Fade the rings into the background so the frame edges dissolve
+     instead of hard-clipping the contour lines. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 70% at 58% 46%,
+    #000 42%,
+    transparent 82%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 70% at 58% 46%,
+    #000 42%,
+    transparent 82%
+  );
+}
+
+.project-plate:hover .project-image {
+  transform: translateY(-4px);
 }
 
 @media (prefers-reduced-motion: reduce) {

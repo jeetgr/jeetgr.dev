@@ -9,58 +9,61 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <Reveal>
-        <SectionLabel index={4} label="A couple of things I’ve made" />
+        <SectionLabel index={4} label="Projects" />
 
-        <SectionHeading>Side projects, made to be used.</SectionHeading>
+        <SectionHeading>Two things I designed and built.</SectionHeading>
         <p className="text-muted mt-6 max-w-xl leading-7">
-          These started with problems I wanted to understand better. I designed
-          and built both from scratch.
+          Both started as something I wanted to figure out, and turned into
+          things people actually use.
         </p>
 
         <div className="border-border mt-14 border-t">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article
               key={project.title}
-              className="project-card border-border grid gap-8 border-b py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14"
+              className="project-plate border-border grid gap-8 border-b py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16"
             >
-              <div className="overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={`${project.title} screenshot`}
-                  width={project.imageWidth}
-                  height={project.imageHeight}
-                  loading="lazy"
-                  decoding="async"
-                  className="project-image border-border aspect-video w-full border object-cover object-top shadow-[8px_8px_0_var(--color-surface)] transition-transform duration-300"
-                />
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="border-border bg-surface border p-2">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    width={project.imageWidth}
+                    height={project.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                    className="project-image aspect-video w-full object-cover object-top transition-transform duration-300"
+                  />
+                </div>
               </div>
 
-              <div>
-                <h3 className="font-display text-foreground text-3xl font-semibold tracking-tight">
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <p className="coord">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="font-display text-foreground mt-3 text-3xl font-medium tracking-tight">
                   {project.title}
                 </h3>
-                <p className="text-muted mt-4 max-w-lg leading-7">
+                <p className="text-foreground/80 mt-4 max-w-lg leading-7">
                   {project.description}
                 </p>
 
-                <p className="text-muted mt-6 font-mono text-xs">
-                  Built with {project.stack.join(", ")}
+                <p className="coord mt-6 not-italic">
+                  {project.stack.join(" · ")}
                 </p>
 
-                <div className="mt-7 flex gap-5">
+                <div className="mt-6 flex gap-6">
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground decoration-accent text-sm font-semibold underline decoration-2 underline-offset-4"
+                    className="text-foreground decoration-accent hover:text-accent text-sm font-semibold underline decoration-2 underline-offset-4"
                   >
-                    Open project ↗
+                    Open live ↗
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted hover:text-foreground text-sm font-medium transition-colors"
+                    className="text-muted hover:text-foreground text-sm transition-colors"
                   >
                     Source ↗
                   </a>

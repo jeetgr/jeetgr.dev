@@ -15,7 +15,7 @@
     "check": "pnpm lint && pnpm fmt:check"
   },
   "dependencies": {
-    "@fontsource-variable/bricolage-grotesque": "^5.2.10",
+    "@fontsource-variable/schibsted-grotesk": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@hugeicons/core-free-icons": "^4.2.2",

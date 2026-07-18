@@ -5,24 +5,37 @@ import { Reveal } from "../ui/reveal";
 import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
 
+const roles: Record<string, string> = {
+  Frontend: "the part people see",
+  Backend: "logic and APIs",
+  Databases: "storing and querying data",
+  DevOps: "shipping and running it",
+  Tools: "day to day",
+};
+
 export function Skills() {
   return (
     <SectionWrapper id="skills">
       <Reveal>
-        <SectionLabel index={3} label="What I use" />
+        <SectionLabel index={3} label="Skills" />
 
-        <SectionHeading>My day-to-day stack.</SectionHeading>
+        <SectionHeading>What I work with.</SectionHeading>
 
-        <div className="border-border mt-14 border-t">
+        <div className="border-border mt-12 border-t">
           {skillGroups.map((group) => (
             <div
               key={group.category}
-              className="border-border grid gap-4 border-b py-5 sm:grid-cols-[10rem_1fr]"
+              className="border-border grid gap-3 border-b py-6 md:grid-cols-[16rem_1fr] md:gap-10"
             >
-              <p className="text-muted font-mono text-xs">{group.category}</p>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              <div>
+                <h3 className="font-display text-foreground text-xl font-medium">
+                  {group.category}
+                </h3>
+                <p className="coord mt-1 not-italic">{roles[group.category]}</p>
+              </div>
+              <ul className="flex flex-wrap gap-x-6 gap-y-2 md:pt-1">
                 {group.items.map((item) => (
-                  <li key={item} className="text-foreground text-sm">
+                  <li key={item} className="text-foreground/85 text-sm">
                     {item}
                   </li>
                 ))}

@@ -8,16 +8,7 @@ type SectionLabelProps = {
 
 export function SectionLabel({ index, label, className }: SectionLabelProps) {
   return (
-    <span
-      className={cn(
-        "text-primary inline-flex items-center gap-3 font-mono text-xs",
-        className
-      )}
-      data-section={index}
-    >
-      <span className="text-border-strong" aria-hidden="true">
-        /
-      </span>
+    <span className={cn("legend-key", className)} data-section={index}>
       {label}
     </span>
   );

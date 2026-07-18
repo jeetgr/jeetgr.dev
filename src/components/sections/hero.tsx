@@ -1,56 +1,48 @@
 import { SectionWrapper } from "../layout/section-wrapper";
 import { buttonVariants } from "../ui/button";
+import { Contours } from "../ui/contours";
 import { Reveal } from "../ui/reveal";
-import { SectionLabel } from "../ui/section-label";
 
 export function Hero() {
   return (
     <SectionWrapper
       id="home"
-      className="flex min-h-[calc(100svh-4.5rem)] flex-col justify-center py-16 md:py-20"
+      divider={false}
+      className="relative flex min-h-[calc(100svh-4.25rem)] flex-col justify-center overflow-hidden py-16"
     >
+      <Contours className="pointer-events-none absolute -top-20 right-[-12%] h-[130%] w-[75%] opacity-90 md:right-0 md:w-[55%]" />
+
       <Reveal>
-        <SectionLabel index={1} label="Hello, I’m Jeet." />
+        <div className="relative max-w-3xl">
+          <p className="coord">Uttarakhand, India</p>
 
-        <h1 className="font-display text-foreground mt-8 max-w-5xl text-[clamp(3.4rem,9vw,7.6rem)] leading-[0.9] font-semibold tracking-[-0.065em]">
-          I build for the web,
-          <span className="text-primary block">from front to back.</span>
-        </h1>
+          <h1 className="font-display text-foreground mt-6 text-[clamp(3rem,8.5vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.03em]">
+            Jeet Gangwar — <span className="text-primary">full-stack</span>
+            <br />
+            developer.
+          </h1>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-[1fr_19rem] md:items-end">
-          <div>
-            <p className="text-muted max-w-2xl text-lg leading-8">
-              I’m a full-stack developer from Uttarakhand. At Zanthium, I work
-              across React interfaces, Node services, databases, and the servers
-              they run on.
-            </p>
+          <p className="text-foreground/80 mt-8 max-w-xl text-lg leading-8">
+            I build web apps end to end: the frontend people use, the backend
+            behind it, and the servers that keep it running. About two years in,
+            still figuring things out as I go.
+          </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#projects"
-                className={buttonVariants({ variant: "primary" })}
-              >
-                See what I’ve built
-              </a>
-              <a
-                href="/resume.pdf"
-                download="Jeet-Gangwar-Fullstack-Developer.pdf"
-                className={buttonVariants({ variant: "outline" })}
-              >
-                Résumé
-              </a>
-            </div>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a
+              href="#projects"
+              className={buttonVariants({ variant: "primary" })}
+            >
+              See the work
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Jeet-Gangwar-Fullstack-Developer.pdf"
+              className="text-muted hover:text-foreground border-border hover:border-accent border-b pb-1 font-mono text-xs tracking-wide uppercase transition-colors"
+            >
+              Download résumé
+            </a>
           </div>
-
-          <aside className="border-accent/60 text-muted rotate-[-1.5deg] border-l-2 pl-5 text-sm leading-6">
-            <p className="font-display text-foreground text-lg font-semibold">
-              Right now
-            </p>
-            <p className="mt-2">
-              Working full-time, studying for my MCA, and still making time for
-              side projects that teach me something new.
-            </p>
-          </aside>
         </div>
       </Reveal>
     </SectionWrapper>

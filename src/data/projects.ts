@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "Make Your Resume",
     description:
-      "A resume builder with live preview as you type. Built the templates, layout engine, and a lightweight custom auth system from scratch — no third-party auth provider.",
+      "A resume builder with live preview as you type. I built the templates, the layout engine, and a lightweight auth system from scratch, without a third-party auth provider.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     live: "https://myr.jeetgr.dev",
     github: "https://github.com/jeetgr/makeyourresume",

@@ -34,7 +34,7 @@ export function Contact() {
     onSubmit: async ({ value }) => {
       try {
         await sendContactEmail({ data: value });
-        toast.success("Message sent — I'll get back to you soon.");
+        toast.success("Thanks! I'll get back to you soon.");
         form.reset();
       } catch {
         toast.error("Something went wrong. Try again or email me directly.");
@@ -45,18 +45,19 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <Reveal>
-        <SectionLabel index={6} label="Get in touch" />
+        <SectionLabel index={6} label="Contact" />
 
-        <div className="mt-7 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="mt-6 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <SectionHeading className="mt-0">Say hello.</SectionHeading>
             <p className="text-muted mt-6 max-w-md leading-7">
-              If you want to talk about a role, a project, or something
-              interesting on the web, send me a note. I read every message.
+              Whether it&apos;s a job, a project, or just a hello, send a
+              message. It comes straight to my inbox and I&apos;ll get back to
+              you.
             </p>
             <a
               href="mailto:hello@jeetgr.dev"
-              className="text-foreground border-border hover:text-primary mt-9 inline-block border-b pb-1 font-medium transition-colors"
+              className="text-foreground border-border hover:border-accent hover:text-accent mt-9 inline-block border-b pb-1 font-mono text-sm transition-colors"
             >
               hello@jeetgr.dev ↗
             </a>
@@ -68,7 +69,6 @@ export function Contact() {
               e.stopPropagation();
               void form.handleSubmit();
             }}
-            className="border-border border-t pt-8"
           >
             <form.Field
               name="website"
@@ -181,10 +181,9 @@ export function Contact() {
                   type="submit"
                   size="md"
                   disabled={isSubmitting}
-                  className="mt-6 w-fit"
+                  className="mt-8 w-fit"
                 >
-                  {isSubmitting ? "Sending..." : "Send message"}{" "}
-                  <span aria-hidden="true">→</span>
+                  {isSubmitting ? "Sending..." : "Send message"}
                 </Button>
               )}
             </form.Subscribe>

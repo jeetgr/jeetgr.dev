@@ -22,12 +22,11 @@ export function Footer() {
 
   return (
     <footer>
-      <div className="border-border mx-auto flex max-w-7xl flex-col gap-8 border-t px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-12">
+      <div className="contour-rule mx-auto max-w-6xl" aria-hidden="true" />
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10">
         <div>
-          <p className="font-display text-lg font-semibold">Jeet Gangwar</p>
-          <p className="text-muted mt-1 text-sm">
-            Made in Uttarakhand · © {year}
-          </p>
+          <p className="font-display text-lg font-medium">Jeet Gangwar</p>
+          <p className="coord mt-1.5">Uttarakhand, India · © {year}</p>
         </div>
 
         <div className="flex items-center gap-5">

@@ -10,7 +10,7 @@ export function SectionHeading({
   return (
     <h2
       className={cn(
-        "font-display text-foreground mt-6 max-w-3xl text-4xl leading-[1.02] font-semibold tracking-[-0.04em] md:text-6xl",
+        "font-display text-foreground mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-[-0.015em] md:text-5xl",
         className
       )}
       {...props}

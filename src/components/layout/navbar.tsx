@@ -37,10 +37,10 @@ export function Navbar() {
 
   return (
     <header className="bg-background/90 border-border sticky top-0 z-50 border-b backdrop-blur-lg">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 lg:px-10">
         <a
           href="#home"
-          className="font-display text-foreground text-lg font-semibold tracking-tight"
+          className="font-display text-foreground text-lg font-medium tracking-tight"
         >
           Jeet Gangwar
         </a>
@@ -50,7 +50,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-muted hover:text-foreground text-sm transition-colors"
+              className="text-muted hover:text-accent font-mono text-xs tracking-wide uppercase transition-colors"
             >
               {link.label}
             </a>
@@ -82,7 +82,7 @@ export function Navbar() {
       {open && (
         <div
           id={mobileNavId}
-          className="border-border bg-background border-b px-5 py-5 md:hidden"
+          className="border-border bg-background border-b px-5 py-5 sm:px-8 md:hidden"
         >
           <div className="flex flex-col gap-4">
             {links.map((link) => (
@@ -92,7 +92,7 @@ export function Navbar() {
                 onClick={() => {
                   setOpen(false);
                 }}
-                className="text-muted hover:text-foreground font-mono text-sm"
+                className="text-muted hover:text-accent font-mono text-xs tracking-wide uppercase"
               >
                 {link.label}
               </a>
