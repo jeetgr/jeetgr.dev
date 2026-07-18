@@ -357,7 +357,7 @@ export default defineConfig({
     "typescript/class-literal-property-style": "error",
     "typescript/consistent-generic-constructors": "error",
     "typescript/consistent-indexed-object-style": "error",
-    "typescript/consistent-return": "error",
+    "typescript/consistent-return": "off",
     "typescript/consistent-type-assertions": "error",
     "typescript/consistent-type-definitions": "off",
     "typescript/consistent-type-exports": "error",

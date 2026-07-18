@@ -128,22 +128,6 @@ textarea {
   );
 }
 
-.contour-field {
-  color: color-mix(in oklab, var(--color-primary) 32%, transparent);
-  /* Fade the rings into the background so the frame edges dissolve
-     instead of hard-clipping the contour lines. */
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 70% at 58% 46%,
-    #000 42%,
-    transparent 82%
-  );
-  mask-image: radial-gradient(
-    ellipse 70% 70% at 58% 46%,
-    #000 42%,
-    transparent 82%
-  );
-}
-
 .project-plate:hover .project-image {
   transform: translateY(-4px);
 }

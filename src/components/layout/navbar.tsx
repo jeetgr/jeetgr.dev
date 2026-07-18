@@ -1,8 +1,37 @@
 import { Menu, X } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+
+/**
+ * Isolated so the scroll subscription re-renders only this readout, not the
+ * whole navbar (which would make the shared-layout marker jump).
+ */
+function ElevationReadout() {
+  const { scrollYProgress } = useScroll();
+  const [elevation, setElevation] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    setElevation(Math.round(value * 100));
+  });
+
+  return (
+    <span
+      className="coord tabular-nums"
+      aria-hidden="true"
+      title="Scroll position"
+    >
+      ELEV {String(elevation).padStart(3, "0")}%
+    </span>
+  );
+}
 
 const links = [
   { href: "#about", label: "About" },
@@ -12,10 +41,46 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
+const sectionIds = ["home", ...links.map((link) => link.href.slice(1))];
+
 const mobileNavId = "mobile-nav";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+  const reduced = useReducedMotion() ?? false;
+
+  useEffect(() => {
+    const sections = sectionIds
+      .map((id) => document.querySelector(`#${id}`))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let best: IntersectionObserverEntry | null = null;
+        for (const entry of entries) {
+          if (
+            entry.isIntersecting &&
+            (best === null || entry.intersectionRatio > best.intersectionRatio)
+          ) {
+            best = entry;
+          }
+        }
+        if (best !== null) {
+          setActive(best.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
+    );
+
+    for (const section of sections) {
+      observer.observe(section);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) {
@@ -46,18 +111,38 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-muted hover:text-accent font-mono text-xs tracking-wide uppercase transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "true" : undefined}
+                className={`relative font-mono text-xs tracking-wide uppercase transition-colors ${
+                  isActive ? "text-accent" : "text-muted hover:text-foreground"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute -bottom-2 left-1/2 ml-[-3px] block size-1.5"
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 400, damping: 30 }
+                    }
+                  >
+                    <span className="bg-accent block size-1.5 rotate-45" />
+                  </motion.span>
+                )}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
+          <ElevationReadout />
           <ThemeToggle />
         </div>
 
@@ -92,7 +177,11 @@ export function Navbar() {
                 onClick={() => {
                   setOpen(false);
                 }}
-                className="text-muted hover:text-accent font-mono text-xs tracking-wide uppercase"
+                className={`font-mono text-xs tracking-wide uppercase ${
+                  active === link.href.slice(1)
+                    ? "text-accent"
+                    : "text-muted hover:text-accent"
+                }`}
               >
                 {link.label}
               </a>

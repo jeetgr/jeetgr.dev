@@ -1,15 +1,18 @@
 import { useForm } from "@tanstack/react-form";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { toast } from "sonner";
 
 import { sendContactEmail } from "@/functions/send-contact-email";
 import { contactSchema } from "@/lib/contact-schema";
 import type { ContactFormValues } from "@/lib/contact-schema";
+import { fadeOnly, fadeUp } from "@/lib/motion";
 
 import { SectionWrapper } from "../layout/section-wrapper";
 import { Button } from "../ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
-import { Reveal } from "../ui/reveal";
+import { Magnetic } from "../ui/magnetic";
+import { Reveal, RevealItem } from "../ui/reveal";
 import { SectionHeading } from "../ui/section-heading";
 import { SectionLabel } from "../ui/section-label";
 import { Textarea } from "../ui/textarea";
@@ -22,6 +25,7 @@ const defaultValues: ContactFormValues = {
 };
 
 export function Contact() {
+  const reduced = useReducedMotion() ?? false;
   const form = useForm({
     defaultValues,
     validators: {
@@ -40,11 +44,11 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact">
-      <Reveal>
+      <Reveal stagger>
         <SectionLabel index={6} label="Send a signal" />
 
         <div className="mt-6 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          <div>
+          <RevealItem>
             <SectionHeading className="mt-0">Say hello.</SectionHeading>
             <p className="text-muted mt-6 max-w-md leading-7">
               A role, a project, or something interesting on the web — send a
@@ -56,9 +60,10 @@ export function Contact() {
             >
               hello@jeetgr.dev ↗
             </a>
-          </div>
+          </RevealItem>
 
-          <form
+          <motion.form
+            variants={reduced ? fadeOnly : fadeUp}
             onSubmit={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -172,17 +177,30 @@ export function Contact() {
 
             <form.Subscribe selector={(state) => state.isSubmitting}>
               {(isSubmitting) => (
-                <Button
-                  type="submit"
-                  size="md"
-                  disabled={isSubmitting}
-                  className="mt-8 w-fit"
-                >
-                  {isSubmitting ? "Sending..." : "Send message"}
-                </Button>
+                <Magnetic className="mt-8">
+                  <Button
+                    type="submit"
+                    size="md"
+                    disabled={isSubmitting}
+                    className="w-fit"
+                  >
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      <motion.span
+                        key={isSubmitting ? "sending" : "idle"}
+                        initial={reduced ? false : { opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={reduced ? undefined : { opacity: 0, y: -6 }}
+                        transition={{ duration: 0.2 }}
+                        className="inline-flex items-center gap-2"
+                      >
+                        {isSubmitting ? "Sending..." : "Send message"}
+                      </motion.span>
+                    </AnimatePresence>
+                  </Button>
+                </Magnetic>
               )}
             </form.Subscribe>
-          </form>
+          </motion.form>
         </div>
       </Reveal>
     </SectionWrapper>
