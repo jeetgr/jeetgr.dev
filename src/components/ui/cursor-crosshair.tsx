@@ -68,7 +68,7 @@ export function CursorCrosshair() {
       />
       <motion.div className="absolute top-0 left-0" style={{ x, y }}>
         <span className="border-accent absolute top-[-3px] left-[-3px] size-1.5 rotate-45 border" />
-        <div className="text-accent bg-background/70 border-border absolute top-3 left-3 border px-1.5 py-0.5 font-mono text-[0.6rem] leading-tight tracking-tight tabular-nums backdrop-blur-sm">
+        <div className="text-accent bg-background/70 border-border absolute top-3 left-3 rounded-sm border px-1.5 py-0.5 font-mono text-[0.6rem] leading-tight tracking-tight tabular-nums backdrop-blur-sm">
           <motion.span className="block">{xLabel}</motion.span>
           <motion.span className="block">{yLabel}</motion.span>
         </div>

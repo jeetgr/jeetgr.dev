@@ -74,7 +74,7 @@ export function ProjectCard({
               ? undefined
               : { rotateX, rotateY, transformPerspective: 900 }
           }
-          className="spotlight border-border group-hover:border-border-strong bg-surface relative border p-2 transition-colors duration-300"
+          className="spotlight border-border group-hover:border-border-strong bg-surface relative rounded-lg border p-2 transition-colors duration-300"
         >
           <img
             src={project.image}
@@ -83,7 +83,7 @@ export function ProjectCard({
             height={project.imageHeight}
             loading="lazy"
             decoding="async"
-            className="project-image aspect-video w-full object-cover object-top transition-transform duration-300"
+            className="project-image aspect-video w-full rounded-md object-cover object-top transition-transform duration-300"
           />
           <span
             aria-hidden="true"

@@ -17,7 +17,7 @@ export function Tile({
     <RevealItem
       onPointerMove={onSpotlight}
       className={cn(
-        "spotlight border-border bg-surface/50 relative border p-6",
+        "spotlight border-border bg-surface/50 relative rounded-lg border p-6",
         className
       )}
       {...props}
