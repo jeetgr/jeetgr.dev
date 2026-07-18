@@ -36,21 +36,21 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <header className="bg-background/90 border-border sticky top-0 z-50 border-b backdrop-blur-lg">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
         <a
           href="#home"
-          className="font-display text-foreground text-lg font-medium"
+          className="font-display text-foreground text-lg font-semibold tracking-tight"
         >
-          jeetgr<span className="text-accent">.dev</span>
+          Jeet Gangwar
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-muted hover:text-foreground font-mono text-sm transition-colors"
+              className="text-muted hover:text-foreground text-sm transition-colors"
             >
               {link.label}
             </a>
@@ -66,7 +66,7 @@ export function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls={mobileNavId}
-          className="text-foreground md:hidden"
+          className="text-foreground grid size-9 place-items-center md:hidden"
           onClick={() => {
             setOpen((v) => !v);
           }}
@@ -82,7 +82,7 @@ export function Navbar() {
       {open && (
         <div
           id={mobileNavId}
-          className="border-border border-t px-6 py-4 md:hidden"
+          className="border-border bg-background border-b px-5 py-5 md:hidden"
         >
           <div className="flex flex-col gap-4">
             {links.map((link) => (

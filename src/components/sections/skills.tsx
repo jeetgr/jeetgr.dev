@@ -9,17 +9,18 @@ export function Skills() {
   return (
     <SectionWrapper id="skills">
       <Reveal>
-        <SectionLabel index={3} label="SKILLS" />
+        <SectionLabel index={3} label="What I use" />
 
-        <SectionHeading>Stack</SectionHeading>
+        <SectionHeading>My day-to-day stack.</SectionHeading>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="border-border mt-14 border-t">
           {skillGroups.map((group) => (
-            <div key={group.category} className="border-border border-l-2 pl-4">
-              <p className="text-muted font-mono text-xs tracking-widest">
-                {group.category.toUpperCase()}
-              </p>
-              <ul className="mt-3 flex flex-col gap-2">
+            <div
+              key={group.category}
+              className="border-border grid gap-4 border-b py-5 sm:grid-cols-[10rem_1fr]"
+            >
+              <p className="text-muted font-mono text-xs">{group.category}</p>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
                 {group.items.map((item) => (
                   <li key={item} className="text-foreground text-sm">
                     {item}

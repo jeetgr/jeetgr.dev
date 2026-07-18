@@ -21,9 +21,14 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-border border-t">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-10 md:flex-row md:justify-between">
-        <p className="text-muted font-mono text-xs">© {year} Jeet Gangwar</p>
+    <footer>
+      <div className="border-border mx-auto flex max-w-7xl flex-col gap-8 border-t px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-12">
+        <div>
+          <p className="font-display text-lg font-semibold">Jeet Gangwar</p>
+          <p className="text-muted mt-1 text-sm">
+            Made in Uttarakhand · © {year}
+          </p>
+        </div>
 
         <div className="flex items-center gap-5">
           {socials.map(({ href, icon, label }) => (

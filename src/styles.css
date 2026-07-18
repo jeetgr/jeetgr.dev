@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import "@fontsource/space-grotesk/latin-500.css";
-@import "@fontsource/space-grotesk/latin-700.css";
+@import "@fontsource-variable/bricolage-grotesque";
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
 @import "@fontsource/jetbrains-mono/latin-400.css";
 @import "@fontsource/jetbrains-mono/latin-500.css";
 
@@ -20,54 +20,54 @@ html.theme-switching *::after {
 }
 
 @theme {
-  --color-background: oklch(97% 0.005 90);
-  --color-foreground: oklch(15% 0.02 264);
+  --color-background: oklch(97.5% 0.012 88);
+  --color-foreground: oklch(21% 0.025 255);
 
-  --color-surface: oklch(94% 0.006 90);
-  --color-surface-foreground: oklch(18% 0.02 264);
+  --color-surface: oklch(94.5% 0.016 88);
+  --color-surface-foreground: oklch(21% 0.025 255);
 
-  --color-border: oklch(78% 0.02 260);
-  --color-border-strong: oklch(65% 0.03 260);
+  --color-border: oklch(84% 0.02 88);
+  --color-border-strong: oklch(65% 0.035 88);
 
-  --color-primary: oklch(40% 0.13 260);
-  --color-primary-foreground: oklch(97% 0.005 90);
+  --color-primary: oklch(50% 0.15 258);
+  --color-primary-foreground: oklch(98% 0.008 88);
 
-  --color-accent: oklch(65% 0.13 75);
-  --color-accent-foreground: oklch(15% 0.02 264);
+  --color-accent: oklch(62% 0.15 48);
+  --color-accent-foreground: oklch(98% 0.008 88);
 
-  --color-muted: oklch(50% 0.01 264);
+  --color-muted: oklch(48% 0.025 255);
 
-  --color-signal: oklch(50% 0.06 150);
-  --color-signal-foreground: oklch(97% 0.005 90);
+  --color-signal: oklch(67% 0.15 155);
+  --color-signal-foreground: oklch(18% 0.03 258);
 
   --color-destructive: oklch(55% 0.2 25);
   --color-destructive-foreground: oklch(97% 0.005 90);
 
-  --font-display: "Space Grotesk", sans-serif;
+  --font-display: "Bricolage Grotesque Variable", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 .dark {
-  --color-background: oklch(15% 0.02 264);
-  --color-foreground: oklch(95% 0.005 90);
+  --color-background: oklch(17% 0.025 255);
+  --color-foreground: oklch(93% 0.015 88);
 
-  --color-surface: oklch(20% 0.02 264);
-  --color-surface-foreground: oklch(92% 0.005 90);
+  --color-surface: oklch(21% 0.025 255);
+  --color-surface-foreground: oklch(93% 0.015 88);
 
-  --color-border: oklch(30% 0.02 264);
-  --color-border-strong: oklch(38% 0.03 264);
+  --color-border: oklch(31% 0.025 255);
+  --color-border-strong: oklch(43% 0.03 255);
 
-  --color-primary: oklch(70% 0.13 260);
-  --color-primary-foreground: oklch(15% 0.02 264);
+  --color-primary: oklch(72% 0.12 255);
+  --color-primary-foreground: oklch(17% 0.035 258);
 
-  --color-accent: oklch(70% 0.13 75);
-  --color-accent-foreground: oklch(15% 0.02 264);
+  --color-accent: oklch(72% 0.13 50);
+  --color-accent-foreground: oklch(17% 0.035 258);
 
-  --color-muted: oklch(65% 0.01 264);
+  --color-muted: oklch(70% 0.025 250);
 
-  --color-signal: oklch(65% 0.06 150);
-  --color-signal-foreground: oklch(15% 0.02 264);
+  --color-signal: oklch(72% 0.14 155);
+  --color-signal-foreground: oklch(17% 0.035 258);
 
   --color-destructive: oklch(65% 0.2 25);
   --color-destructive-foreground: oklch(97% 0.005 90);
@@ -85,5 +85,35 @@ html {
 }
 
 body {
-  @apply bg-background text-foreground;
+  @apply bg-background text-foreground antialiased;
+}
+
+::selection {
+  @apply bg-primary text-primary-foreground;
+}
+
+a,
+button,
+input,
+textarea {
+  @apply focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-4;
+}
+
+.section-shell {
+  @apply relative;
+}
+
+.section-shell::before {
+  content: "";
+  @apply bg-border absolute top-0 right-5 left-5 h-px sm:right-8 sm:left-8 lg:right-12 lg:left-12;
+}
+
+.project-card:hover .project-image {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-image {
+    transition: none !important;
+  }
 }

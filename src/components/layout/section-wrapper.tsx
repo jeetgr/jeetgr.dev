@@ -8,7 +8,10 @@ export function SectionWrapper({
 }: React.ComponentProps<"section">) {
   return (
     <section
-      className={cn("mx-auto max-w-5xl px-6 py-12 md:py-20", className)}
+      className={cn(
+        "section-shell mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-28 lg:px-12",
+        className
+      )}
       {...props}
     />
   );

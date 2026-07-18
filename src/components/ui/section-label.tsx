@@ -6,16 +6,19 @@ type SectionLabelProps = {
   className?: string;
 };
 
-function formatSectionIndex(index: number | string) {
-  return typeof index === "number" ? String(index).padStart(2, "0") : index;
-}
-
 export function SectionLabel({ index, label, className }: SectionLabelProps) {
   return (
     <span
-      className={cn("text-muted font-mono text-xs tracking-widest", className)}
+      className={cn(
+        "text-primary inline-flex items-center gap-3 font-mono text-xs",
+        className
+      )}
+      data-section={index}
     >
-      SEC.{formatSectionIndex(index)} — {label}
+      <span className="text-border-strong" aria-hidden="true">
+        /
+      </span>
+      {label}
     </span>
   );
 }

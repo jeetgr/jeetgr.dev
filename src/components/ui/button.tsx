@@ -3,18 +3,16 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50";
 
 const variantClasses = {
-  primary:
-    "bg-primary text-primary-foreground transition-opacity hover:opacity-90",
-  outline:
-    "border-border text-foreground hover:bg-surface border transition-colors",
+  primary: "bg-foreground text-background hover:bg-primary",
+  outline: "border-border text-foreground hover:border-foreground border",
 } as const;
 
 const sizeClasses = {
-  default: "px-5 py-2.5",
-  md: "px-6 py-2.5",
+  default: "px-5 py-3",
+  md: "px-6 py-3",
 } as const;
 
 type ButtonVariant = keyof typeof variantClasses;

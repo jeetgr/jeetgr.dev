@@ -9,17 +9,21 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <Reveal>
-        <SectionLabel index={4} label="PROJECTS" />
+        <SectionLabel index={4} label="A couple of things I’ve made" />
 
-        <SectionHeading>Projects</SectionHeading>
+        <SectionHeading>Side projects, made to be used.</SectionHeading>
+        <p className="text-muted mt-6 max-w-xl leading-7">
+          These started with problems I wanted to understand better. I designed
+          and built both from scratch.
+        </p>
 
-        <div className="mt-12 flex flex-col gap-16">
-          {projects.map((project, index) => (
+        <div className="border-border mt-14 border-t">
+          {projects.map((project) => (
             <article
               key={project.title}
-              className="grid gap-8 md:grid-cols-2 md:items-center"
+              className="project-card border-border grid gap-8 border-b py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14"
             >
-              <div className={index % 2 === 1 ? "md:order-2" : ""}>
+              <div className="overflow-hidden">
                 <img
                   src={project.image}
                   alt={`${project.title} screenshot`}
@@ -27,46 +31,36 @@ export function Projects() {
                   height={project.imageHeight}
                   loading="lazy"
                   decoding="async"
-                  className="border-border aspect-video w-full rounded-lg border object-cover"
+                  className="project-image border-border aspect-video w-full border object-cover object-top shadow-[8px_8px_0_var(--color-surface)] transition-transform duration-300"
                 />
               </div>
 
-              <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                <p className="text-muted font-mono text-xs">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-display text-foreground mt-2 text-2xl font-medium">
+              <div>
+                <h3 className="font-display text-foreground text-3xl font-semibold tracking-tight">
                   {project.title}
                 </h3>
-                <p className="text-muted mt-4 leading-relaxed">
+                <p className="text-muted mt-4 max-w-lg leading-7">
                   {project.description}
                 </p>
 
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
-                    <li
-                      key={tech}
-                      className="border-border text-muted rounded-full border px-3 py-1 font-mono text-xs"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-muted mt-6 font-mono text-xs">
+                  Built with {project.stack.join(", ")}
+                </p>
 
-                <div className="mt-6 flex gap-4">
+                <div className="mt-7 flex gap-5">
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary text-sm font-medium hover:underline"
+                    className="text-foreground decoration-accent text-sm font-semibold underline decoration-2 underline-offset-4"
                   >
-                    Live site ↗
+                    Open project ↗
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground text-sm font-medium hover:underline"
+                    className="text-muted hover:text-foreground text-sm font-medium transition-colors"
                   >
                     Source ↗
                   </a>

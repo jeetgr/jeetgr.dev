@@ -32,7 +32,7 @@ export function FieldLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className={cn("text-muted font-mono text-xs tracking-widest", className)}
+      className={cn("text-muted text-sm", className)}
       {...props}
     />
   );
