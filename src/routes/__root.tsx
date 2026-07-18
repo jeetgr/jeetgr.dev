@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   useHtmlClass,
 } from "@/components/layout/theme-provider";
+import { CursorCrosshair } from "@/components/ui/cursor-crosshair";
 import { personJsonLd } from "@/lib/json-ld";
 
 import appCss from "../styles.css?url";
@@ -80,6 +81,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             {children}
             <Footer />
             <AppToaster />
+            <CursorCrosshair />
           </ThemeProvider>
         </MotionConfig>
         <TanStackDevtools
