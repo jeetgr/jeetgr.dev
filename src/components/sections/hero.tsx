@@ -39,7 +39,7 @@ export function Hero() {
             animate={reduced ? undefined : { opacity: [1, 0.25, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
-          Uttarakhand, India
+          Available for work
         </motion.p>
 
         <h1 className="font-display text-foreground mt-6 text-[clamp(3rem,8.5vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.03em]">
