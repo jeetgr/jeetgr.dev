@@ -56,7 +56,7 @@ export function Contact() {
             </p>
             <a
               href="mailto:hello@jeetgr.dev"
-              className="text-foreground border-border hover:border-accent hover:text-accent mt-9 inline-block border-b pb-1 font-mono text-sm transition-colors"
+              className="text-foreground border-border hover:border-accent hover:text-accent-text mt-9 inline-block border-b pb-1 font-mono text-sm transition-colors"
             >
               hello@jeetgr.dev ↗
             </a>

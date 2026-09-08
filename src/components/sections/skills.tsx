@@ -50,7 +50,7 @@ export function Skills() {
                     key={item}
                     variants={reduced ? fadeOnly : fadeUp}
                     whileHover={reduced ? undefined : { y: -3 }}
-                    className="text-foreground/85 hover:text-accent cursor-default text-sm transition-colors"
+                    className="text-foreground/85 hover:text-accent-text cursor-default text-sm transition-colors"
                   >
                     {item}
                   </motion.li>

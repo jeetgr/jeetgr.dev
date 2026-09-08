@@ -9,7 +9,7 @@ const variantClasses = {
   primary:
     "bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground",
   outline:
-    "border-border-strong text-foreground hover:border-accent hover:text-accent border",
+    "border-border-strong text-foreground hover:border-accent hover:text-accent-text border",
 } as const;
 
 const sizeClasses = {

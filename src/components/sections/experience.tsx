@@ -90,7 +90,7 @@ export function Experience() {
                   key={point}
                   className="text-foreground/80 flex gap-3 text-sm leading-6"
                 >
-                  <span className="text-accent mt-0.5" aria-hidden="true">
+                  <span className="text-accent-text mt-0.5" aria-hidden="true">
                     ·
                   </span>
                   {point}

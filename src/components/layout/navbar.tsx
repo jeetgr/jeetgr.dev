@@ -91,7 +91,9 @@ export function Navbar() {
                 href={link.href}
                 aria-current={isActive ? "true" : undefined}
                 className={`relative font-mono text-xs tracking-wide uppercase transition-colors ${
-                  isActive ? "text-accent" : "text-muted hover:text-foreground"
+                  isActive
+                    ? "text-accent-text"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -150,8 +152,8 @@ export function Navbar() {
                 }}
                 className={`font-mono text-xs tracking-wide uppercase ${
                   active === link.href.slice(1)
-                    ? "text-accent"
-                    : "text-muted hover:text-accent"
+                    ? "text-accent-text"
+                    : "text-muted hover:text-accent-text"
                 }`}
               >
                 {link.label}

@@ -87,7 +87,7 @@ export function ProjectCard({
           />
           <span
             aria-hidden="true"
-            className="text-accent pointer-events-none absolute top-3 right-3 font-mono text-[0.65rem] tracking-widest opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="text-accent-text pointer-events-none absolute top-3 right-3 font-mono text-[0.65rem] tracking-widest opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             ◹ PLOT {String(index + 1).padStart(2, "0")}
           </span>
@@ -110,7 +110,7 @@ export function ProjectCard({
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground decoration-accent hover:text-accent text-sm font-semibold underline decoration-2 underline-offset-4"
+            className="text-foreground decoration-accent hover:text-accent-text text-sm font-semibold underline decoration-2 underline-offset-4"
           >
             Open live ↗
           </a>

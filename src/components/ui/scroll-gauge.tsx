@@ -51,7 +51,7 @@ export function ScrollGauge() {
           className="absolute right-0 flex -translate-y-1/2 items-center gap-2"
           style={{ top: markerTop }}
         >
-          <span className="text-accent font-mono text-[0.6rem] tracking-tight tabular-nums">
+          <span className="text-accent-text font-mono text-[0.6rem] tracking-tight tabular-nums">
             ELEV <motion.span className="inline-block">{readout}</motion.span>
           </span>
           <span className="bg-accent size-1.5 rotate-45" />

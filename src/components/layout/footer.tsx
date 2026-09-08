@@ -79,7 +79,7 @@ function Wordmark() {
       </motion.p>
       {!reduced && (
         <p
-          className={`text-accent pointer-events-none absolute inset-0 px-5 pt-6 sm:px-8 lg:px-10 ${wordmarkClasses} mask-[radial-gradient(circle_14rem_at_var(--mx,-300px)_var(--my,50%),#000_0%,transparent_70%)]`}
+          className={`text-accent-text pointer-events-none absolute inset-0 px-5 pt-6 sm:px-8 lg:px-10 ${wordmarkClasses} mask-[radial-gradient(circle_14rem_at_var(--mx,-300px)_var(--my,50%),#000_0%,transparent_70%)]`}
         >
           jeetgr.dev
         </p>
