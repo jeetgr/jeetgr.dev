@@ -12,7 +12,6 @@ import {
   useHtmlClass,
 } from "@/components/layout/theme-provider";
 import { Atmosphere } from "@/components/ui/atmosphere";
-import { CursorCrosshair } from "@/components/ui/cursor-crosshair";
 import { ScrollGauge } from "@/components/ui/scroll-gauge";
 import { personJsonLd } from "@/lib/json-ld";
 
@@ -100,7 +99,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               {children}
               <Footer />
               <AppToaster />
-              <CursorCrosshair />
               <ScrollGauge />
             </ThemeProvider>
           </ReactLenis>
