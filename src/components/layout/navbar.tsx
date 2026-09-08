@@ -1,7 +1,7 @@
 import { Menu, X } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
@@ -21,6 +21,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const reduced = useReducedMotion() ?? false;
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const sections = sectionIds
@@ -62,6 +63,7 @@ export function Navbar() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
 
@@ -120,6 +122,7 @@ export function Navbar() {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           aria-label="Toggle menu"
           aria-expanded={open}
