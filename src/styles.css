@@ -29,7 +29,7 @@ html.theme-switching *::after {
   --color-surface-foreground: oklch(24% 0.02 258);
 
   --color-border: oklch(90% 0.008 255);
-  --color-border-strong: oklch(68% 0.03 70);
+  --color-border-strong: oklch(60% 0.03 70);
 
   --color-primary: oklch(64% 0.15 62);
   --color-primary-foreground: oklch(24% 0.03 262);
