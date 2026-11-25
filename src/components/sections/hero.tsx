@@ -11,7 +11,7 @@ export function Hero() {
           aria-hidden="true"
           className="bg-available mt-[7px] inline-block size-2 shrink-0 rounded-full"
         />
-        Available immediately for full-time and contract roles
+        Available immediately for full-time roles
       </p>
 
       <h1 className="enter font-display mt-7 max-w-[15ch] text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.98] font-semibold tracking-[-0.035em] text-balance [--i:1]">

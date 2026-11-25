@@ -48,8 +48,7 @@ export function Contact() {
           Available immediately. Let’s talk.
         </h2>
         <p className="text-body mt-6 max-w-[46ch] text-[17px] leading-relaxed">
-          I’m serving my notice period and can join right away, full-time or on
-          contract.
+          I’m serving my notice period and can join right away.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="mailto:hello@jeetgr.dev" className={buttonVariants()}>
