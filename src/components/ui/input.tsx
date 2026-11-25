@@ -1,19 +1,8 @@
 import { cn } from "@/lib/utils";
 
+export const fieldClasses =
+  "border-field bg-background text-foreground focus:border-foreground aria-invalid:border-destructive w-full rounded-[10px] border px-3.5 text-base transition-[border-color] duration-150 outline-none focus-visible:outline-none focus:ring-1 focus:ring-foreground";
+
 export function Input({ className, ...props }: React.ComponentProps<"input">) {
-  return (
-    <span className="relative block">
-      <input
-        className={cn(
-          "peer border-border text-foreground focus:border-primary aria-invalid:border-destructive w-full rounded-none border-0 border-b bg-transparent px-0 py-3 text-sm transition-colors outline-none",
-          className
-        )}
-        {...props}
-      />
-      <span
-        aria-hidden="true"
-        className="bg-accent absolute -bottom-px left-0 h-0.5 w-full origin-left scale-x-0 transition-transform duration-300 ease-out peer-focus:scale-x-100"
-      />
-    </span>
-  );
+  return <input className={cn(fieldClasses, "h-12", className)} {...props} />;
 }

@@ -1,74 +1,32 @@
-import { Monitor, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
+import { Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import type { IconSvgElement } from "@hugeicons/react";
-import { motion, useReducedMotion } from "motion/react";
-
-import { cn } from "@/lib/utils";
 
 import { useTheme } from "./theme-provider";
-import type { ThemeMode } from "./theme-provider";
-
-const options: { value: ThemeMode; icon: IconSvgElement; label: string }[] = [
-  { value: "light", icon: Sun03Icon, label: "Light" },
-  { value: "dark", icon: Moon02Icon, label: "Dark" },
-  { value: "auto", icon: Monitor, label: "Auto" },
-];
 
 export function ThemeToggle() {
-  const { themeMode, resolvedTheme, setTheme } = useTheme();
-  const reduced = useReducedMotion() ?? false;
-
-  const activeTheme = themeMode === "auto" ? "auto" : resolvedTheme;
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <div
-      role="radiogroup"
-      aria-label="Theme"
-      className="border-border bg-surface inline-flex max-w-fit items-center gap-1 rounded-lg border p-1"
+    <button
+      type="button"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      onClick={() => {
+        setTheme(isDark ? "light" : "dark");
+      }}
+      className="text-body hover:text-foreground hover:bg-panel grid size-11 place-items-center rounded-[10px] transition-colors duration-150"
     >
-      {options.map(({ value, icon, label }) => {
-        const isActive = activeTheme === value;
-        return (
-          <button
-            key={value}
-            type="button"
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
-            role="radio"
-            aria-checked={isActive}
-            aria-label={label}
-            onClick={() => {
-              setTheme(value);
-            }}
-            className={cn(
-              "relative rounded-md p-1.5 transition-colors",
-              isActive
-                ? "text-primary-foreground"
-                : "text-muted hover:text-foreground"
-            )}
-          >
-            {isActive && (
-              <motion.span
-                layoutId="theme-active"
-                className="bg-primary absolute inset-0 rounded-md"
-                transition={
-                  reduced
-                    ? { duration: 0 }
-                    : { type: "spring", stiffness: 400, damping: 32 }
-                }
-              />
-            )}
-            <motion.span
-              key={value}
-              className="relative block"
-              initial={reduced ? false : { rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              transition={{ duration: 0.25 }}
-            >
-              <HugeiconsIcon icon={icon} className="size-4" />
-            </motion.span>
-          </button>
-        );
-      })}
-    </div>
+      {/* Icon follows the html class so it is right before hydration. */}
+      <HugeiconsIcon
+        icon={Moon02Icon}
+        className="size-5 dark:hidden"
+        strokeWidth={1.8}
+      />
+      <HugeiconsIcon
+        icon={Sun03Icon}
+        className="hidden size-5 dark:block"
+        strokeWidth={1.8}
+      />
+    </button>
   );
 }

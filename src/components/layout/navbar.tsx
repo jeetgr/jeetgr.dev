@@ -1,59 +1,21 @@
 import { Menu, X } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
+  { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
-
-const sectionIds = ["home", ...links.map((link) => link.href.slice(1))];
 
 const mobileNavId = "mobile-nav";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("home");
-  const reduced = useReducedMotion() ?? false;
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const sections = sectionIds
-      .map((id) => document.querySelector(`#${id}`))
-      .filter((el): el is HTMLElement => el !== null);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let best: IntersectionObserverEntry | null = null;
-        for (const entry of entries) {
-          if (
-            entry.isIntersecting &&
-            (best === null || entry.intersectionRatio > best.intersectionRatio)
-          ) {
-            best = entry;
-          }
-        }
-        if (best !== null) {
-          setActive(best.target.id);
-        }
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
-    );
-
-    for (const section of sections) {
-      observer.observe(section);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     if (!open) {
@@ -75,77 +37,59 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="bg-background/90 border-border sticky top-0 z-50 border-b backdrop-blur-lg">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 lg:px-10">
+    <header className="bg-background/90 sticky top-0 z-50 backdrop-blur-md">
+      <nav
+        aria-label="Main"
+        className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6"
+      >
         <a
-          href="#home"
-          className="font-display text-foreground text-lg font-medium tracking-tight"
+          href="#top"
+          className="font-display text-[19px] font-semibold tracking-[-0.01em]"
         >
           Jeet Gangwar
         </a>
 
         <div className="hidden items-center gap-7 md:flex">
-          {links.map((link) => {
-            const isActive = active === link.href.slice(1);
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "true" : undefined}
-                className={`relative font-mono text-xs tracking-wide uppercase transition-colors ${
-                  isActive
-                    ? "text-accent-text"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                {link.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-active"
-                    className="absolute -bottom-2 left-1/2 ml-[-3px] block size-1.5"
-                    transition={
-                      reduced
-                        ? { duration: 0 }
-                        : { type: "spring", stiffness: 400, damping: 30 }
-                    }
-                  >
-                    <span className="bg-accent block size-1.5 rotate-45" />
-                  </motion.span>
-                )}
-              </a>
-            );
-          })}
-        </div>
-
-        <div className="hidden items-center gap-4 md:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-body hover:text-foreground text-[15px] font-medium transition-colors duration-150"
+            >
+              {link.label}
+            </a>
+          ))}
           <ThemeToggle />
         </div>
 
-        <button
-          ref={menuButtonRef}
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          aria-controls={mobileNavId}
-          className="text-foreground grid size-9 place-items-center md:hidden"
-          onClick={() => {
-            setOpen((v) => !v);
-          }}
-        >
-          {open ? (
-            <HugeiconsIcon icon={X} className="size-5" />
-          ) : (
-            <HugeiconsIcon icon={Menu} className="size-5" />
-          )}
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls={mobileNavId}
+            className="hover:bg-panel grid size-11 place-items-center rounded-[10px] transition-colors duration-150"
+            onClick={() => {
+              setOpen((v) => !v);
+            }}
+          >
+            <HugeiconsIcon
+              icon={open ? X : Menu}
+              className="size-5"
+              strokeWidth={1.8}
+            />
+          </button>
+        </div>
       </nav>
 
       {open && (
         <div
           id={mobileNavId}
-          className="border-border bg-background border-b px-5 py-5 sm:px-8 md:hidden"
+          className="border-line bg-background border-b px-6 pb-4 md:hidden"
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -153,16 +97,11 @@ export function Navbar() {
                 onClick={() => {
                   setOpen(false);
                 }}
-                className={`font-mono text-xs tracking-wide uppercase ${
-                  active === link.href.slice(1)
-                    ? "text-accent-text"
-                    : "text-muted hover:text-accent-text"
-                }`}
+                className="py-3 text-[17px] font-medium"
               >
                 {link.label}
               </a>
             ))}
-            <ThemeToggle />
           </div>
         </div>
       )}

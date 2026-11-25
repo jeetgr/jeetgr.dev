@@ -8,15 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@fontsource-variable/schibsted-grotesk':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/inter':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/jetbrains-mono':
-        specifier: ^5.2.8
-        version: 5.2.8
+      '@fontsource-variable/bricolage-grotesque':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/hanken-grotesk':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@hugeicons/core-free-icons':
         specifier: ^4.2.2
         version: 4.2.2
@@ -53,12 +50,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      lenis:
-        specifier: ^1.3.25
-        version: 1.3.25(react@19.2.7)
-      motion:
-        specifier: ^12.42.2
-        version: 12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       nitro:
         specifier: 3.0.260610-beta
         version: 3.0.260610-beta(@upstash/redis@1.38.0)(chokidar@5.0.0)(jiti@2.7.0)(lru-cache@11.5.2)(rollup@4.62.2)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
@@ -92,7 +83,7 @@ importers:
         version: 6.8.1(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@rolldown/plugin-babel':
         specifier: ^0.2.3
-        version: 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.4)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
+        version: 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
       '@tailwindcss/vite':
         specifier: ^4.3.2
         version: 4.3.2(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
@@ -110,7 +101,7 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
         specifier: ^6.0.3
-        version: 6.0.3(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.4)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
+        version: 6.0.3(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
       babel-plugin-react-compiler:
         specifier: ^1.0.0
         version: 1.0.0
@@ -384,14 +375,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource-variable/schibsted-grotesk@5.2.8':
-    resolution: {integrity: sha512-nZAorDrFue4dXZbI613WdvAhu5DPH1UJYNn5fWl7Poa+nl/s9o3VUcQImIiVZpQnYG/jkPVzHsTE7WZbSDvvkw==}
+  '@fontsource-variable/bricolage-grotesque@5.3.0':
+    resolution: {integrity: sha512-TLi9Q4hJjS2UvoTMRSS2nHu6c4R56lAw60NR9QYtVRCHn0XtsFpiEhNffZ8Glsoxu6wEEwLKBP8lb94J52PNBA==}
 
-  '@fontsource/inter@5.2.8':
-    resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
-
-  '@fontsource/jetbrains-mono@5.2.8':
-    resolution: {integrity: sha512-6w8/SG4kqvIMu7xd7wt6x3idn1Qux3p9N62s6G3rfldOUYHpWcc2FKrqf+Vo44jRvqWj2oAtTHrZXEP23oSKwQ==}
+  '@fontsource-variable/hanken-grotesk@5.3.0':
+    resolution: {integrity: sha512-DOd0FqL+3cH2dfNy0JtSq9tUfxBz5mLmHMjTU0DOr3E9Zo6wxuatCl53DIPNrSPgCsnuKyM739BTIG5glCLirw==}
 
   '@hugeicons/core-free-icons@4.2.2':
     resolution: {integrity: sha512-fjQW3p6cwoJmwK3oCnV8Z3PC5sHihDvr2jkAHax8cxqp62GaV/D7B/Rnao+JwicW8fmLZUQ6QrzWfoyMFOEQlQ==}
@@ -2228,20 +2216,6 @@ packages:
   fetchdts@0.1.7:
     resolution: {integrity: sha512-YoZjBdafyLIop9lSxXVI33oLD5kN31q4Td+CasofLLYeLXRFeOsuOw0Uo+XNRi9PZlbfdlN2GmRtm4tCEQ9/KA==}
 
-  framer-motion@12.42.2:
-    resolution: {integrity: sha512-5XY9luDiu0oHfHBjpDthFMh0ES+122w6p/papSJBweMkO8Sn+PW2QaEgRblQBpWFnuvZS5qvarpt/hO2pjGmnw==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -2347,20 +2321,6 @@ packages:
 
   leac@0.6.0:
     resolution: {integrity: sha512-y+SqErxb8h7nE/fiEX07jsbuhrpO9lL8eca7/Y1nuWV2moNlXhyd59iDGcRf6moVyDMbmTNzL40SUyrFU/yDpg==}
-
-  lenis@1.3.25:
-    resolution: {integrity: sha512-mOKxayErlaONK8fm4LN3XNd99Qu4plTpn9h9qf8wxzjGrJDzuD84FYzZ81HCd6ZsWp++VWVwOzL286Pf2s2u4A==}
-    peerDependencies:
-      '@nuxt/kit': '>=3.0.0'
-      react: '>=17.0.0'
-      vue: '>=3.0.0'
-    peerDependenciesMeta:
-      '@nuxt/kit':
-        optional: true
-      react:
-        optional: true
-      vue:
-        optional: true
 
   lightningcss-android-arm64@1.32.0:
     resolution: {integrity: sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==}
@@ -2488,26 +2448,6 @@ packages:
   minipass@7.1.3:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
-
-  motion-dom@12.42.2:
-    resolution: {integrity: sha512-5gIMWLp/PycBtJRJWRgjxke5n8dlvkSn2DrYW+tr3XcqAZY1xZh6BJyooJXCM8wdfM7wfMjkBJNLge1CKPUIRA==}
-
-  motion-utils@12.39.0:
-    resolution: {integrity: sha512-8nadJAJjTtqRkmRF36FoJTrywK9nnFmnPwnSMyxaOCU7GDjN9RTMJIxx9De8ErM+vpPhMccr/6fo5WciyQLnMQ==}
-
-  motion@12.42.2:
-    resolution: {integrity: sha512-Atvv11yUKIid41cVrRBDVX5m8tF8kNpExRSlbpt6APClhDjtwQssgFHhQzejxw7/7YYbjHSPKBVbHo05BuJT5Q==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -3332,11 +3272,9 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@fontsource-variable/schibsted-grotesk@5.2.8': {}
+  '@fontsource-variable/bricolage-grotesque@5.3.0': {}
 
-  '@fontsource/inter@5.2.8': {}
-
-  '@fontsource/jetbrains-mono@5.2.8': {}
+  '@fontsource-variable/hanken-grotesk@5.3.0': {}
 
   '@hugeicons/core-free-icons@4.2.2': {}
 
@@ -3841,11 +3779,11 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.1.5':
     optional: true
 
-  '@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.4)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))':
+  '@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))':
     dependencies:
       '@babel/core': 7.29.7
       picomatch: 4.0.5
-      rolldown: 1.1.4
+      rolldown: 1.1.5
     optionalDependencies:
       '@babel/runtime': 7.29.7
       vite: 8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)
@@ -4480,12 +4418,12 @@ snapshots:
     dependencies:
       uncrypto: 0.1.3
 
-  '@vitejs/plugin-react@6.0.3(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.4)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))':
+  '@vitejs/plugin-react@6.0.3(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0)
     optionalDependencies:
-      '@rolldown/plugin-babel': 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.4)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
+      '@rolldown/plugin-babel': 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.4(@types/node@22.20.0)(esbuild@0.28.1)(jiti@2.7.0))
       babel-plugin-react-compiler: 1.0.0
 
   accepts@1.3.8:
@@ -4724,15 +4662,6 @@ snapshots:
 
   fetchdts@0.1.7: {}
 
-  framer-motion@12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
-    dependencies:
-      motion-dom: 12.42.2
-      motion-utils: 12.39.0
-      tslib: 2.8.1
-    optionalDependencies:
-      react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-
   fsevents@2.3.3:
     optional: true
 
@@ -4815,10 +4744,6 @@ snapshots:
       shell-quote: 1.9.0
 
   leac@0.6.0: {}
-
-  lenis@1.3.25(react@19.2.7):
-    optionalDependencies:
-      react: 19.2.7
 
   lightningcss-android-arm64@1.32.0:
     optional: true
@@ -4909,20 +4834,6 @@ snapshots:
   minimist@1.2.8: {}
 
   minipass@7.1.3: {}
-
-  motion-dom@12.42.2:
-    dependencies:
-      motion-utils: 12.39.0
-
-  motion-utils@12.39.0: {}
-
-  motion@12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
-    dependencies:
-      framer-motion: 12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      tslib: 2.8.1
-    optionalDependencies:
-      react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
 
   ms@2.1.3: {}
 

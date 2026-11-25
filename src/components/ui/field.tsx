@@ -4,7 +4,7 @@ export function FieldGroup({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("flex flex-col gap-6", className)} {...props} />;
+  return <div className={cn("flex flex-col gap-5", className)} {...props} />;
 }
 
 export function Field({
@@ -15,10 +15,7 @@ export function Field({
     <div
       // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
       role="group"
-      className={cn(
-        "data-[invalid=true]:text-destructive flex flex-col gap-2",
-        className
-      )}
+      className={cn("flex flex-col gap-2", className)}
       {...props}
     />
   );
@@ -32,7 +29,7 @@ export function FieldLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className={cn("text-muted text-sm", className)}
+      className={cn("text-[15px] font-medium", className)}
       {...props}
     />
   );
@@ -57,7 +54,7 @@ export function FieldError({
   }
 
   return (
-    <p role="alert" className={cn("text-destructive text-xs", className)}>
+    <p role="alert" className={cn("text-destructive text-sm", className)}>
       {errors
         .map((e) => (typeof e === "string" ? e : e?.message))
         .filter(Boolean)

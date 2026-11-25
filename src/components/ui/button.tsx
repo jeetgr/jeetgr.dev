@@ -3,35 +3,23 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-md font-mono text-xs tracking-wide uppercase transition-colors disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex h-12 items-center justify-center gap-2 rounded-[10px] px-5.5 text-[15px] font-semibold transition-[scale,background-color,opacity] duration-150 ease-out not-disabled:active:scale-[0.96] disabled:opacity-60 [-webkit-tap-highlight-color:transparent]";
 
 const variantClasses = {
-  primary:
-    "bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground",
-  outline:
-    "border-border-strong text-foreground hover:border-accent hover:text-accent-text border",
+  primary: "bg-foreground text-background hover:opacity-85",
+  secondary: "bg-panel text-foreground hover:bg-panel-hover",
 } as const;
-
-const sizeClasses = {
-  default: "px-5 py-3",
-  md: "px-6 py-3.5",
-} as const;
-
-type ButtonVariant = keyof typeof variantClasses;
-type ButtonSize = keyof typeof sizeClasses;
 
 type ButtonVariantsProps = {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+  variant?: keyof typeof variantClasses;
   className?: string;
 };
 
 export function buttonVariants({
   variant = "primary",
-  size = "default",
   className,
 }: ButtonVariantsProps = {}) {
-  return cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
+  return cn(baseClasses, variantClasses[variant], className);
 }
 
 type ButtonProps = React.ComponentProps<"button"> & ButtonVariantsProps;
@@ -39,14 +27,13 @@ type ButtonProps = React.ComponentProps<"button"> & ButtonVariantsProps;
 export function Button({
   className,
   variant = "primary",
-  size = "default",
   type = "button",
   ...props
 }: ButtonProps) {
   return (
     <button
       type={type}
-      className={buttonVariants({ variant, size, className })}
+      className={buttonVariants({ variant, className })}
       {...props}
     />
   );
