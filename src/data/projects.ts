@@ -34,8 +34,8 @@ export const projects = [
   {
     title: "Make Your Resume",
     description:
-      "A resume builder with a live preview as you type, email and password sign-in, and client-side templates.",
-    stack: "Next.js, TypeScript, Tailwind CSS",
+      "A free resume builder, rewritten from scratch. The PDF updates as you type, with 5 templates, drag-to-reorder sections and text-based PDFs that ATS software can read. Works without an account; signing up syncs multiple resumes across devices.",
+    stack: "Next.js, TypeScript, React PDF, Better Auth, Drizzle, PostgreSQL",
     live: "https://myr.jeetgr.dev",
     github: "https://github.com/jeetgr/makeyourresume",
     image: "/projects/make-your-resume.webp",
